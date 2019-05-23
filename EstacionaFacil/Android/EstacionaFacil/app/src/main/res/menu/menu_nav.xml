@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_movimentacao"
+            android:title="Movimentação"
+            android:icon="@drawable/ic_movimentacao"/>
+        <item
+            android:id="@+id/menu_entrada"
+            android:title="Registrar entrada"
+            android:icon="@drawable/ic_entrada" />
+        <item
+            android:id="@+id/menu_saida"
+            android:title="Registrar saída"
+            android:icon="@drawable/ic_saida" />
+    </group>
+    <item android:title="Mensalistas">
+        <menu>
+            <item
+                android:id="@+id/visualizar_mensalista"
+                android:title="Visualizar mensalista"
+                android:icon="@drawable/ic_visualizar_mensalista"/>
+            <item
+                android:id="@+id/cadastrar_mensalista"
+                android:title="Cadastrar Mensalista"
+                android:icon="@drawable/ic_mensalista" />
+
+            <item
+                android:id="@+id/receber_mensalidade"
+                android:title="Receber Mensalidade"
+                android:icon="@drawable/ic_receber_mensalidade"/>
+        </menu>
+    </item>
+    <item
+        android:title="Relatórios"
+        android:icon="@drawable/ic_relatorio">
+        <menu>
+            <item
+                android:id="@+id/relatorio_dia"
+                android:title="Relatório do dia"/>
+
+            <item
+                android:id="@+id/relatorio_mes"
+                android:title="Relatório do mês"/>
+        </menu>
+    </item>
+</menu>

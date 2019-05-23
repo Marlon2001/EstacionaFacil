@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CadastroActivity"
+    android:id="@+id/relativ1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Entrada de Veiculo"
+            android:textSize="36sp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginBottom="40sp"
+            android:textAlignment="center"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layout_txt_placa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintTextAppearance="@style/HintText">
+
+            <EditText
+                android:id="@+id/txt_placa_cadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Placa do veiculo"
+                android:paddingLeft="10dp"
+                android:inputType="text"
+                android:textSize="22sp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layout_txt_modelo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintTextAppearance="@style/HintText">
+
+            <EditText
+                android:id="@+id/txt_modelo_cadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Modelo do Carro"
+                android:paddingLeft="10dp"
+                android:inputType="text"
+                android:layout_marginTop="8dp"
+                android:textSize="22sp"/>
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Adicionar Veiculo"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
+        android:textSize="26sp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btn_nova_movimentacao"/>
+</RelativeLayout>

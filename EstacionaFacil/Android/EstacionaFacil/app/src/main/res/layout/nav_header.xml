@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:padding="16dp"
+    android:gravity="bottom"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:background="@drawable/header_background">
+
+    <ImageView
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@mipmap/ic_usuario"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Marlon Santos"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="marlon@uol.com"
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+</LinearLayout>
