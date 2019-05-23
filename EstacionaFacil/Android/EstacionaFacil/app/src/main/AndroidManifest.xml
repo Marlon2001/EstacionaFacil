@@ -47,11 +47,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".MovimentacaoActivity" android:theme="@style/AppThemeNormal">
+        <activity
+            android:name=".MovimentacaoActivity"
+            android:theme="@style/AppThemeNormal">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity android:name=".CadastroMensalistaActivity" />
+        <activity android:name=".CadastroVeiculo" />
+        <activity android:name=".CadastroEndereco" />
+        <activity android:name=".CadastroTelefone"></activity>
     </application>
 
 </manifest>
