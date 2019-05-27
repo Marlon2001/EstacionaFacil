@@ -1,14 +1,17 @@
 package com.senai.sp.model;
 
-public class Telefone {
-    private Long codTelefone;
+import java.io.Serializable;
+
+public class Telefone implements Serializable{
+
+    private int codTelefone;
     private String telefone;
 
-    public Long getCodTelefone() {
+    public int getCodTelefone() {
         return codTelefone;
     }
 
-    public void setCodTelefone(Long codTelefone) {
+    public void setCodTelefone(int codTelefone) {
         this.codTelefone = codTelefone;
     }
 

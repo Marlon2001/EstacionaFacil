@@ -68,8 +68,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.visualizar_mensalista:
                 break;
             case R.id.cadastrar_mensalista:
-                Intent intent = new Intent(this, CadastroMensalistaActivity.class);
-                startActivity(intent);
+                Intent cadastrarMensalista = new Intent(this, CadastroMensalistaActivity.class);
+                startActivity(cadastrarMensalista);
                 break;
             case R.id.receber_mensalidade:
                 break;

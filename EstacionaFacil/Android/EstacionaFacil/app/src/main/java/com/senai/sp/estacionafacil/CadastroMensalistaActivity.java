@@ -5,11 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-public class CadastroMensalistaActivity extends AppCompatActivity implements View.OnClickListener {
+import com.senai.sp.model.Mensalista;
 
-    Button btnProximo;
+public class CadastroMensalistaActivity extends AppCompatActivity {
+
+    private Button btnProximo;
+    private Button btnCancelar;
+    private EditText txtNome;
+    private EditText txtEmail;
+    private EditText txtCpf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,26 +24,41 @@ public class CadastroMensalistaActivity extends AppCompatActivity implements Vie
         setContentView(R.layout.activity_cadastro_mensalista);
 
         btnProximo = findViewById(R.id.btn_salvar_mensalista);
-        btnProximo.setOnClickListener(this);
-//        btnProximo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(CadastroMensalistaActivity.this,CadastroEndereco.class);
-//                startActivity(intent);
-//            }
-//        });
+        btnCancelar = findViewById(R.id.btn_cancelar_mensalista);
+        txtNome = findViewById(R.id.cadatro_nome_mensalista);
+        txtEmail = findViewById(R.id.cadastro_email_mensalista);
+        txtCpf = findViewById(R.id.cadastro_cpf_mensalista);
 
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btn_salvar_mensalista:
-                Intent intent = new Intent(this,CadastroEndereco.class);
-                startActivity(intent);
-                Toast.makeText(this, "Clicou", Toast.LENGTH_SHORT).show();
-                break;
+        Intent intent = getIntent();
+        Mensalista mensalistaIntent = (Mensalista) intent.getSerializableExtra("mensalista");
+        if(mensalistaIntent != null){
+            txtNome.setText(mensalistaIntent.getNome());
+            txtEmail.setText(mensalistaIntent.getEmail());
+            txtCpf.setText(mensalistaIntent.getCpf());
         }
 
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        btnProximo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Mensalista mensalista = new Mensalista();
+
+                // Populando o objeto mensalista, para podermos coloca-lo no putExtra
+                mensalista.setNome(txtNome.getText().toString());
+                mensalista.setEmail(txtEmail.getText().toString());
+                mensalista.setCpf(txtCpf.getText().toString());
+
+                Intent cadastroEndereco = new Intent(CadastroMensalistaActivity.this, CadastroEndereco.class);
+                cadastroEndereco.putExtra("mensalista", mensalista);
+
+                startActivity(cadastroEndereco);
+            }
+        });
     }
 }

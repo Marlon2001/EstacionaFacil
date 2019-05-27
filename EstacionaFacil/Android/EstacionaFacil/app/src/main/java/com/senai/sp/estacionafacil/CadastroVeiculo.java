@@ -3,30 +3,77 @@ package com.senai.sp.estacionafacil;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.EditText;
 
-public class CadastroVeiculo extends AppCompatActivity implements View.OnClickListener {
+import com.senai.sp.model.Endereco;
+import com.senai.sp.model.Mensalista;
+import com.senai.sp.model.Telefone;
+import com.senai.sp.model.Veiculo;
 
-    Button btnProximo;
+public class CadastroVeiculo extends AppCompatActivity {
+
+    private Button btnFinalizar;
+    private Button btnCancelar;
+    private EditText txtPlaca;
+    private EditText txtModelo;
+    private EditText txtAno;
+    private Mensalista mensalista;
+    private Endereco endereco;
+    private Telefone telefone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_veiculo);
-        btnProximo = findViewById(R.id.btn_salvar_endereco_mensalista);
 
-    }
+        btnFinalizar = findViewById(R.id.btn_salvar_veiculo_mensalista);
+        btnCancelar = findViewById(R.id.btn_cancelar_veiculo);
+        txtPlaca = findViewById(R.id.txt_placa_mensalista);
+        txtModelo = findViewById(R.id.txt_modelo_mensalista);
+        txtAno = findViewById(R.id.txt_ano_mensalista);
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btn_salvar_mensalista:
-                Intent intent = new Intent(this,CadastroTelefone.class);
-                startActivity(intent);
-                Toast.makeText(this, "Clicou", Toast.LENGTH_SHORT).show();
-                break;
+        Intent intent = getIntent();
+        Mensalista mensalistaIntent = (Mensalista) intent.getSerializableExtra("mensalista");
+        Endereco enderecoIntent = (Endereco) intent.getSerializableExtra("endereco");
+        Telefone telefoneIntent = (Telefone) intent.getSerializableExtra("telefone");
+
+        if(mensalistaIntent != null){
+            this.mensalista = mensalistaIntent;
         }
+        if(enderecoIntent != null){
+            this.endereco = enderecoIntent;
+        }
+        if(telefoneIntent != null){
+            this.telefone = telefoneIntent;
+        }
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            Intent abrirMainActivtity = new Intent(CadastroVeiculo.this, MainActivity.class);
+
+            startActivity(abrirMainActivtity);
+            }
+        });
+
+        btnFinalizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Veiculo veiculo = new Veiculo();
+
+                // Populando o objeto veiculo, e chamandos as tasks de cadastro
+                veiculo.setPlaca(txtPlaca.getText().toString());
+                veiculo.setModelo(txtModelo.getText().toString());
+                veiculo.setAnoVeiculo(txtAno.getText().toString());
+
+                Log.d("----------- Mensalista", mensalista.getNome());
+                Log.d("----------- Endereco", endereco.getLogradouro());
+                Log.d("----------- Telefone", telefone.getTelefone());
+                Log.d("----------- Veiculo", veiculo.getPlaca());
+            }
+        });
     }
 }

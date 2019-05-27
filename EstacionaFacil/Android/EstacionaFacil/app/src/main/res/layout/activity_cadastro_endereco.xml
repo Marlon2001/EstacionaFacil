@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
-
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,7 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/caixa_pai">
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,13 +17,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="15dp"
+            android:padding="12dp"
+            android:layout_marginBottom="48dp"
             android:id="@+id/linear4">
             
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:text="Endereco"
                 android:textAlignment="center"
                 android:textSize="36sp"
@@ -34,82 +33,86 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="18dp"
                 android:text="Logradouro:"
                 android:textAlignment="viewStart"
-                android:textSize="16sp" />
-
+                android:textSize="24sp" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:hint="Rua Julieta"
-                android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="24sp"
+                android:id="@+id/txt_endereco_mensalista"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
+                android:text="Bairro:"
+                android:textAlignment="viewStart"
+                android:textSize="24sp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Jd. das Rosas"
+                android:textSize="24sp"
+                android:id="@+id/txt_bairro_mensalista"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="Número:"
                 android:textAlignment="viewStart"
-                android:textSize="16sp" />
-
+                android:textSize="24sp" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:hint="3895"
-                android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="24sp"
+                android:id="@+id/txt_numero_mensalista"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Estado"
+                android:layout_marginTop="8dp"
+                android:text="Estado:"
                 android:textAlignment="viewStart"
-                android:textSize="16sp" />
-
-            <EditText
+                android:textSize="24sp" />
+            <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:hint="Selecione o estado"
-                android:textAlignment="center"
-                android:textSize="20sp" />
+                android:layout_height="44dp"
+                android:id="@+id/spinner_estados"
+                android:drawSelectorOnTop="true"
+                android:textSize="24sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Cidade"
+                android:layout_marginTop="8dp"
+                android:text="Cidade:"
                 android:textAlignment="viewStart"
-                android:textSize="16sp" />
-
+                android:textSize="24sp" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:hint="Selecione a cidade"
-                android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="24sp"
+                android:id="@+id/txt_cidade_mensalista"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="De uma descrição"
+                android:layout_marginTop="8dp"
+                android:text="Descrição:"
                 android:textAlignment="viewStart"
-                android:textSize="16sp" />
-
+                android:textSize="24sp" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:hint="Casa da minha mãe"
-                android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="24sp"
+                android:id="@+id/txt_descricao_mensalista"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -123,19 +126,18 @@
                 android:background="@color/colorPrimaryDark"
                 android:text="Voltar"
                 android:textColor="@color/colorWhite"
-                android:textSize="26sp" />
+                android:textSize="26sp"
+                android:id="@+id/btn_voltar_endereco"/>
 
             <Button
-                android:id="@+id/btn_salvar_endereco_mensalista"
+                android:id="@+id/btn_proximo_endereco"
                 android:layout_width="0dp"
                 android:layout_height="65dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryDark"
                 android:text="Próximo"
                 android:textColor="@color/colorWhite"
-                android:textSize="26sp"
-                android:textStyle="bold" />
+                android:textSize="26sp" />
         </LinearLayout>
     </RelativeLayout>
-
 </ScrollView>

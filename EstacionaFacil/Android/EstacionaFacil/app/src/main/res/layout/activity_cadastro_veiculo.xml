@@ -1,69 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CadastroMensalistaActivity"
-    android:id="@+id/relativePai"
-    >
+    android:id="@+id/relativePai">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="15dp">
+        android:padding="12dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Veiculo"
+            android:text="Veículo"
             android:textSize="36sp"
             android:textAlignment="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:textStyle="bold"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Modelo Veiculo:"
-            android:textSize="16sp"
-            android:textAlignment="viewStart"
-            android:layout_marginTop="10dp"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:layout_marginTop="5dp"
-            android:hint="Fordk"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Placa Veiculo:"
-            android:textSize="16sp"
-            android:textAlignment="viewStart"
-            android:layout_marginTop="10dp"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:layout_marginTop="5dp"
-            android:hint="GTX-1542"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Modelo"
-            android:textSize="16sp"
-            android:textAlignment="viewStart"
-            android:layout_marginTop="10dp"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:layout_marginTop="5dp"
-            android:hint="Listar Modelos aqui (id)"/>
-    </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Placa:"
+            android:textSize="24sp"
+            android:textAlignment="viewStart"
+            android:layout_marginTop="8dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:hint="GTX-1542"
+            android:id="@+id/txt_placa_mensalista"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Modelo:"
+            android:textSize="24sp"
+            android:textAlignment="viewStart"
+            android:layout_marginTop="8dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:hint="Fordk"
+            android:id="@+id/txt_modelo_mensalista"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ano:"
+            android:textSize="24sp"
+            android:textAlignment="viewStart"
+            android:layout_marginTop="8dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:hint="2016"
+            android:id="@+id/txt_ano_mensalista"/>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -73,20 +74,20 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="65dp"
+            android:text="Cancelar"
             android:background="@color/colorPrimaryDark"
             android:textColor="@color/colorWhite"
-            android:textSize="26sp"/>
+            android:textSize="26sp"
+            android:id="@+id/btn_cancelar_veiculo"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="65dp"
             android:layout_weight="1"
-            android:text="Próximo"
+            android:text="Finalizar"
             android:background="@color/colorPrimaryDark"
             android:textColor="@color/colorWhite"
-            android:textStyle="bold"
             android:textSize="26sp"
             android:id="@+id/btn_salvar_veiculo_mensalista"/>
     </LinearLayout>
-
 </RelativeLayout>

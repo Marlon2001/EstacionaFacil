@@ -1,17 +1,22 @@
 package com.senai.sp.model;
 
-public class Endereco{
-    private Long codEndereco;
-    private String logradouro;
-    private String numero;
-    private String bairro;
-    private Cidade codCidade;
+import java.io.Serializable;
 
-    public Long getCodEndereco() {
+public class Endereco implements Serializable {
+
+    private int codEndereco;
+    private String logradouro;
+    private String bairro;
+    private String numero;
+    private String estado;
+    private String cidade;
+    private String descricao;
+
+    public int getCodEndereco() {
         return codEndereco;
     }
 
-    public void setCodEndereco(Long codEndereco) {
+    public void setCodEndereco(int codEndereco) {
         this.codEndereco = codEndereco;
     }
 
@@ -39,22 +44,27 @@ public class Endereco{
         this.bairro = bairro;
     }
 
-    public Cidade getCodCidade() {
-        return codCidade;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setCodCidade(Cidade codCidade) {
-        this.codCidade = codCidade;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    @Override
-    public String toString() {
-        return "Endereco{" +
-                "codEndereco=" + codEndereco +
-                ", logradouro='" + logradouro + '\'' +
-                ", numero='" + numero + '\'' +
-                ", bairro='" + bairro + '\'' +
-                ", codCidade=" + codCidade +
-                '}';
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }

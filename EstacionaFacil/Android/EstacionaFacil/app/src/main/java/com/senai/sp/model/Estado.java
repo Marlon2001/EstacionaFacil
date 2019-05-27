@@ -1,6 +1,7 @@
 package com.senai.sp.model;
 
 public class Estado {
+
     private Long codEstado;
     private String nomeEstado;
     private String sigla;
@@ -27,14 +28,5 @@ public class Estado {
 
     public void setSigla(String sigla) {
         this.sigla = sigla;
-    }
-
-    @Override
-    public String toString() {
-        return "Estado{" +
-                "codEstado=" + codEstado +
-                ", nomeEstado='" + nomeEstado + '\'' +
-                ", sigla='" + sigla + '\'' +
-                '}';
     }
 }

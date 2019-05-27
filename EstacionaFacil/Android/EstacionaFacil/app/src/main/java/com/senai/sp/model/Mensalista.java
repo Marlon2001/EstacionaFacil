@@ -1,41 +1,43 @@
 package com.senai.sp.model;
 
-public class Mensalista {
+import java.io.Serializable;
 
-    private int codVeiculoMensalista;
-    private Mensalista codMensalista;
-    private Veiculo codVeiculo;
+public class Mensalista implements Serializable{
 
-    public int getCodVeiculoMensalista() {
-        return codVeiculoMensalista;
-    }
+    private int codMensalista;
+    private String nome;
+    private String email;
+    private String cpf;
 
-    public void setCodVeiculoMensalista(int codVeiculoMensalista) {
-        this.codVeiculoMensalista = codVeiculoMensalista;
-    }
-
-    public Mensalista getCodMensalista() {
+    public int getCodMensalista() {
         return codMensalista;
     }
 
-    public void setCodMensalista(Mensalista codMensalista) {
+    public void setCodMensalista(int codMensalista) {
         this.codMensalista = codMensalista;
     }
 
-    public Veiculo getCodVeiculo() {
-        return codVeiculo;
+    public String getNome() {
+        return nome;
     }
 
-    public void setCodVeiculo(Veiculo codVeiculo) {
-        this.codVeiculo = codVeiculo;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    @Override
-    public String toString() {
-        return "Mensalista{" +
-                "codVeiculoMensalista=" + codVeiculoMensalista +
-                ", codMensalista=" + codMensalista +
-                ", codVeiculo=" + codVeiculo +
-                '}';
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 }
