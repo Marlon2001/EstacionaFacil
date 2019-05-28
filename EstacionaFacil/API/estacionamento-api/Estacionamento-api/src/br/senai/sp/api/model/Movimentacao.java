@@ -29,16 +29,6 @@ public class Movimentacao {
 	private Integer tempoPermanencia;
 	@Column(name = "valor_pago")
 	private Double valorPago;
-	@Column(name = "tipo")
-	private String tipo;
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
 
 	public Long getCodMovimentacao() {
 		return codMovimentacao;
@@ -100,7 +90,6 @@ public class Movimentacao {
 	public String toString() {
 		return "Movimentacao [codMovimentacao=" + codMovimentacao + ", placa=" + placa + ", modelo=" + modelo
 				+ ", dataEntrada=" + dataEntrada + ", dataSaida=" + dataSaida + ", tempoPermanencia=" + tempoPermanencia
-				+ ", valorPago=" + valorPago + ", tipo=" + tipo + "]";
+				+ ", valorPago=" + valorPago + "]";
 	}
-
 }

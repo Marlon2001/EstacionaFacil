@@ -19,8 +19,16 @@ public class Mensalista {
 	private String nome;
 	@Column(name = "email")
 	private String email;
-	
-	
+	@Column(name = "cpf")
+	private String cpf;
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
 	public Long getCodMensalista() {
 		return codMensalista;
@@ -48,7 +56,10 @@ public class Mensalista {
 
 	@Override
 	public String toString() {
-		return "Mensalista [codMensalista=" + codMensalista + ", nome=" + nome + ", email=" + email + "]";
+		return "Mensalista [codMensalista=" + codMensalista + ", nome=" + nome + ", email=" + email + ", cpf=" + cpf
+				+ "]";
 	}
+
+	
 
 }

@@ -9,8 +9,17 @@ public class Endereco implements Serializable {
     private String bairro;
     private String numero;
     private String estado;
-    private String cidade;
+    private int cidade;
     private String descricao;
+
+
+    public int getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(int cidade) {
+        this.cidade = cidade;
+    }
 
     public int getCodEndereco() {
         return codEndereco;
@@ -52,13 +61,6 @@ public class Endereco implements Serializable {
         this.estado = estado;
     }
 
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
 
     public String getDescricao() {
         return descricao;

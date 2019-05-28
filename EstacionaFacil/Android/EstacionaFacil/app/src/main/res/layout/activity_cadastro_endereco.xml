@@ -84,7 +84,8 @@
                 android:layout_height="44dp"
                 android:id="@+id/spinner_estados"
                 android:drawSelectorOnTop="true"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                />
 
             <TextView
                 android:layout_width="match_parent"

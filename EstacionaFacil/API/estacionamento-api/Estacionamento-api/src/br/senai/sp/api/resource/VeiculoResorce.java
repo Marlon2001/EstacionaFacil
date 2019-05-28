@@ -17,17 +17,21 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.senai.sp.api.model.Fabricante;
+import br.senai.sp.api.model.Mensalista;
 import br.senai.sp.api.model.Veiculo;
 import br.senai.sp.api.repository.FabricanteRepository;
-import br.senai.sp.api.repository.VeiculoRepository;
+import br.senai.sp.api.repository.MensalistaRepository;
+import br.senai.sp.api.repository.VeiculoRapository;
 
 @RestController
 @RequestMapping("/veiculo")
 public class VeiculoResorce {
 	@Autowired
-	private VeiculoRepository veiculoRapository;
+	private VeiculoRapository veiculoRapository;
 	@Autowired
 	FabricanteRepository fabricanteRepository;
+	@Autowired
+	MensalistaRepository mensalistaRepository;
 	
 	@GetMapping
 	public List<Veiculo> getVeiculos(){
@@ -38,11 +42,15 @@ public class VeiculoResorce {
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Veiculo> salvarVeiculo(@RequestBody Veiculo veiculo, HttpServletResponse response){
 		Veiculo veiculoSalvo;
+		Mensalista mensalistaSalvo;
+		
 		
 		Fabricante fabricante;
 		veiculoSalvo = veiculoRapository.save(veiculo);
-		fabricante = fabricanteRepository.findByCod(veiculoSalvo.getCodFabricante().getCodFabricante());
-		veiculoSalvo.setCodFabricante(fabricante);
+		fabricante = fabricanteRepository.findByCod(veiculoSalvo.getFabricante().getCodFabricante());
+		veiculoSalvo.setFabricante(fabricante);
+		mensalistaSalvo  = mensalistaRepository.findByCod(veiculoSalvo.getCodMensalista().getCodMensalista());
+		veiculoSalvo.setCodMensalista(mensalistaSalvo);
 		
 		URI uri = ServletUriComponentsBuilder
 				.fromCurrentRequestUri()

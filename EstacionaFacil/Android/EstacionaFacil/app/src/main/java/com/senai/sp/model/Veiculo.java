@@ -6,6 +6,15 @@ public class Veiculo {
     private String anoVeiculo;
     private String modelo;
     private String placa;
+    private int codFabricante;
+
+    public void setCodFabricante(int codFabricante) {
+        this.codFabricante = codFabricante;
+    }
+
+    public int getCodFabricante() {
+        return codFabricante;
+    }
 
     public int getCodVeiculo() {
         return codVeiculo;
@@ -16,7 +25,7 @@ public class Veiculo {
     }
 
     public String getAnoVeiculo() {
-        return anoVeiculo;
+        return anoVeiculo.substring(0,4);
     }
 
     public void setAnoVeiculo(String anoVeiculo) {

@@ -6,6 +6,15 @@ public class Telefone implements Serializable{
 
     private int codTelefone;
     private String telefone;
+    private String tipoTelefone;
+
+    public String getTipoTelefone() {
+        return tipoTelefone;
+    }
+
+    public void setTipoTelefone(String tipoTelefone) {
+        this.tipoTelefone = tipoTelefone;
+    }
 
     public int getCodTelefone() {
         return codTelefone;

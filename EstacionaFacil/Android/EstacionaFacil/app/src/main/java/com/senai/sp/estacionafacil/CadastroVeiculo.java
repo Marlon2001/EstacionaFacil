@@ -1,5 +1,6 @@
 package com.senai.sp.estacionafacil;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import com.senai.sp.model.Endereco;
 import com.senai.sp.model.Mensalista;
 import com.senai.sp.model.Telefone;
 import com.senai.sp.model.Veiculo;
+import com.senai.sp.tasks.CadastrarSaida;
+import com.senai.sp.tasks.CadastroMensalista;
 
 public class CadastroVeiculo extends AppCompatActivity {
 
@@ -23,6 +26,7 @@ public class CadastroVeiculo extends AppCompatActivity {
     private Mensalista mensalista;
     private Endereco endereco;
     private Telefone telefone;
+    private Veiculo veiculo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +66,15 @@ public class CadastroVeiculo extends AppCompatActivity {
         btnFinalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Veiculo veiculo = new Veiculo();
+                veiculo = new Veiculo();
 
                 // Populando o objeto veiculo, e chamandos as tasks de cadastro
                 veiculo.setPlaca(txtPlaca.getText().toString());
                 veiculo.setModelo(txtModelo.getText().toString());
                 veiculo.setAnoVeiculo(txtAno.getText().toString());
+
+                CadastroMensalista cadastroMensalista = new CadastroMensalista(CadastroVeiculo.this,  mensalista,  telefone,   veiculo,   endereco);
+                cadastroMensalista.execute();
 
                 Log.d("----------- Mensalista", mensalista.getNome());
                 Log.d("----------- Endereco", endereco.getLogradouro());

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.senai.sp.model.Endereco;
 import com.senai.sp.model.Mensalista;
@@ -17,7 +18,7 @@ public class CadastroEndereco extends AppCompatActivity {
     private EditText txtLogradouro;
     private EditText txtBairro;
     private EditText txtNumero;
-    private EditText txtEstado;
+    private Spinner spinerEstado;
     private EditText txtCidade;
     private EditText txtDescricao;
     private Mensalista mensalista;
@@ -34,7 +35,7 @@ public class CadastroEndereco extends AppCompatActivity {
         txtNumero = findViewById(R.id.txt_numero_mensalista);
 
         // Por enquanto, vamos manter o estado e a cidade como um EditText em vez de cidade
-        txtEstado = findViewById(R.id.txt_estado_mensalista);
+        spinerEstado = findViewById(R.id.spinner_estados);
         txtCidade = findViewById(R.id.txt_cidade_mensalista);
         txtDescricao = findViewById(R.id.txt_descricao_mensalista);
 
@@ -49,7 +50,7 @@ public class CadastroEndereco extends AppCompatActivity {
             txtLogradouro.setText(enderecoIntent.getLogradouro());
             txtBairro.setText(enderecoIntent.getBairro());
             txtNumero.setText(enderecoIntent.getNumero());
-            txtEstado.setText(enderecoIntent.getEstado());
+
             txtCidade.setText(enderecoIntent.getCidade());
             txtDescricao.setText(enderecoIntent.getDescricao());
         }
@@ -73,9 +74,11 @@ public class CadastroEndereco extends AppCompatActivity {
             endereco.setLogradouro(txtLogradouro.getText().toString());
             endereco.setBairro(txtBairro.getText().toString());
             endereco.setNumero(txtNumero.getText().toString());
-            endereco.setEstado(txtEstado.getText().toString());
-            endereco.setCidade(txtCidade.getText().toString());
             endereco.setDescricao(txtDescricao.getText().toString());
+
+            //arrumar o cadastro de cidade e endereco
+            endereco.setCidade(1);
+            endereco.setEstado("SP");
 
             Intent cadastrarTelefone = new Intent(CadastroEndereco.this, CadastroTelefone.class);
             cadastrarTelefone.putExtra("mensalista", mensalista);
