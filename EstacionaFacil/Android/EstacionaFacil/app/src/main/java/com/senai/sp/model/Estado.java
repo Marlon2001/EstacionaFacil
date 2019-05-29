@@ -2,15 +2,15 @@ package com.senai.sp.model;
 
 public class Estado {
 
-    private Long codEstado;
+    private int codEstado;
     private String nomeEstado;
     private String sigla;
 
-    public Long getCodEstado() {
+    public int getCodEstado() {
         return codEstado;
     }
 
-    public void setCodEstado(Long codEstado) {
+    public void setCodEstado(int codEstado) {
         this.codEstado = codEstado;
     }
 
@@ -28,5 +28,10 @@ public class Estado {
 
     public void setSigla(String sigla) {
         this.sigla = sigla;
+    }
+
+    @Override
+    public String toString() {
+        return this.getNomeEstado();
     }
 }

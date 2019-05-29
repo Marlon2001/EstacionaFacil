@@ -1,6 +1,6 @@
 package br.senai.sp.api.resource;
 
-import java.util.List;
+import java.util.List; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +18,6 @@ import br.senai.sp.api.repository.EnderecoRepository;
 import br.senai.sp.api.repository.EstadoRepository;
 import br.senai.sp.api.repository.MensalistaRepository;
 
-
 @RestController
 @RequestMapping("/enderecoMensalista")
 public class EnderecoMensalistaResource {
@@ -34,7 +33,6 @@ public class EnderecoMensalistaResource {
 	@Autowired
 	private EnderecoRepository enderecoRepository;
 	
-	
 
 	@GetMapping
 	public List<EnderecoMensalista> getEnderecoMensalista(){
@@ -47,8 +45,6 @@ public class EnderecoMensalistaResource {
 		Endereco enderecoSalvo = enderecoMensalista.getCodEndereco();
 		enderecoSalvo = enderecoRepository.save(enderecoSalvo);
 		
-		
-		
 		Cidade cidade = enderecoMensalista.getCodEndereco().getCodCidade();
 		cidade = cidadeRepository.findByCod(cidade.getCodCidade());
 		Long codEstado = cidade.getCodEstado().getCodEstado();
@@ -60,16 +56,11 @@ public class EnderecoMensalistaResource {
 		enderecoSalvo.setCodCidade(cidade);;
 		enderecoMensalistaSalvo = enderecoMensalistaRepository.save(enderecoMensalista);
 		enderecoMensalistaSalvo.setCodMensalista(
-				mensalistaRepository.findByCod(enderecoMensalistaSalvo.getCodMensalista().getCodMensalista())
-			);
-		
-		Endereco endereco;
-		
+				mensalistaRepository.findByCod(enderecoMensalistaSalvo.getCodMensalista().getCodMensalista()));
 		
 		enderecoMensalistaSalvo.setCodEndereco(
 				enderecoRepository.findByCod(enderecoMensalistaSalvo.getCodEndereco().getCodEndereco())
 		);
-		
 		
 		return enderecoMensalistaSalvo;
 	}

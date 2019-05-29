@@ -8,10 +8,9 @@ public class Endereco implements Serializable {
     private String logradouro;
     private String bairro;
     private String numero;
-    private String estado;
+    private int estado;
     private int cidade;
     private String descricao;
-
 
     public int getCidade() {
         return cidade;
@@ -53,14 +52,13 @@ public class Endereco implements Serializable {
         this.bairro = bairro;
     }
 
-    public String getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
-
 
     public String getDescricao() {
         return descricao;

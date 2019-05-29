@@ -16,6 +16,7 @@ public class CadastroTelefone extends AppCompatActivity {
     private Button btnProximo;
     private Button btnVoltar;
     private EditText txtTelefone;
+    private EditText txtTipotelefone;
     private Mensalista mensalista;
     private Endereco endereco;
 
@@ -27,6 +28,7 @@ public class CadastroTelefone extends AppCompatActivity {
         btnProximo = findViewById(R.id.btn_salvar_telefone_mensalista);
         btnVoltar = findViewById(R.id.btn_voltar_telefone);
         txtTelefone = findViewById(R.id.txt_telefone_mensalista);
+        txtTipotelefone = findViewById(R.id.txt_tipo_telefone_mensalista);
 
         Intent intent = getIntent();
         Mensalista mensalistaIntent = (Mensalista) intent.getSerializableExtra("mensalista");
@@ -41,6 +43,7 @@ public class CadastroTelefone extends AppCompatActivity {
         }
         if(telefoneIntent != null){
             txtTelefone.setText(telefoneIntent.getTelefone());
+            txtTipotelefone.setText(telefoneIntent.getTipoTelefone());
         }
 
         btnVoltar.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +51,6 @@ public class CadastroTelefone extends AppCompatActivity {
             public void onClick(View v) {
             Intent cadastroEndereco = new Intent(CadastroTelefone.this, CadastroEndereco.class);
             cadastroEndereco.putExtra("endereco", endereco);
-
             startActivity(cadastroEndereco);
             }
         });
@@ -60,6 +62,7 @@ public class CadastroTelefone extends AppCompatActivity {
 
             // Populando o objeto telefone, para podermos coloca-lo no putExtra
             telefone.setTelefone(txtTelefone.getText().toString());
+            telefone.setTipoTelefone(txtTipotelefone.getText().toString());
 
             Intent cadastrarVeiculo = new Intent(CadastroTelefone.this, CadastroVeiculo.class);
             cadastrarVeiculo.putExtra("mensalista", mensalista);

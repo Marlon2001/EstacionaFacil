@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.senai.sp.model.Mensalista;
+import com.senai.sp.tasks.CadastroMensalista;
 
 public class CadastroMensalistaActivity extends AppCompatActivity {
 
@@ -17,6 +18,7 @@ public class CadastroMensalistaActivity extends AppCompatActivity {
     private EditText txtNome;
     private EditText txtEmail;
     private EditText txtCpf;
+    public static Mensalista mensalista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,24 +42,24 @@ public class CadastroMensalistaActivity extends AppCompatActivity {
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+            Intent abrirMainActivity = new Intent(CadastroMensalistaActivity.this, MainActivity.class);
+            startActivity(abrirMainActivity);
             }
         });
 
         btnProximo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Mensalista mensalista = new Mensalista();
+            Mensalista mensalista = new Mensalista();
+            // Populando o objeto mensalista, para podermos coloca-lo no putExtra
+            mensalista.setNome(txtNome.getText().toString());
+            mensalista.setEmail(txtEmail.getText().toString());
+            mensalista.setCpf(txtCpf.getText().toString());
 
-                // Populando o objeto mensalista, para podermos coloca-lo no putExtra
-                mensalista.setNome(txtNome.getText().toString());
-                mensalista.setEmail(txtEmail.getText().toString());
-                mensalista.setCpf(txtCpf.getText().toString());
+            Intent cadastroEndereco = new Intent(CadastroMensalistaActivity.this, CadastroEndereco.class);
+            cadastroEndereco.putExtra("mensalista", mensalista);
 
-                Intent cadastroEndereco = new Intent(CadastroMensalistaActivity.this, CadastroEndereco.class);
-                cadastroEndereco.putExtra("mensalista", mensalista);
-
-                startActivity(cadastroEndereco);
+            startActivity(cadastroEndereco);
             }
         });
     }

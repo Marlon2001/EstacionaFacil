@@ -2,16 +2,8 @@ package com.senai.sp.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
-
-import com.senai.sp.estacionafacil.CadastroTelefone;
 import com.senai.sp.estacionafacil.MainActivity;
-import com.senai.sp.model.Endereco;
 import com.senai.sp.model.Mensalista;
-import com.senai.sp.model.Telefone;
-import com.senai.sp.model.Veiculo;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,35 +17,24 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class CadastroMensalista extends AsyncTask {
-    Context context;
-    Mensalista mensalista;
-    Telefone telefone;
-    Veiculo veiculo;
-    Endereco endereco;
-    Mensalista mensalistaResposta;
-    String resposta;
-    String tipoTelefone;
 
-    public  CadastroMensalista(Context context, Mensalista mensalista, Telefone telefone, Veiculo  veiculo, Endereco  endereco){
-        this.context = context;
+    private Mensalista mensalista;
+    private String resposta;
+
+    public  CadastroMensalista(Context context, Mensalista mensalista){
         this.mensalista = mensalista;
-        this.telefone = telefone;
-        this.veiculo = veiculo;
-        this.endereco = endereco;
-        this.tipoTelefone = tipoTelefone;
     }
-
 
     @Override
     protected Object doInBackground(Object[] objects) {
-        JSONStringer jsMovimento = new JSONStringer();
+        JSONStringer jsMensalista = new JSONStringer();
 
         try {
-            jsMovimento.object();
-            jsMovimento.key("nome").value(mensalista.getNome());
-            jsMovimento.key("email").value(mensalista.getEmail());
-            jsMovimento.key("cpf").value(mensalista.getCpf());
-            jsMovimento.endObject();
+            jsMensalista.object();
+            jsMensalista.key("nome").value(mensalista.getNome());
+            jsMensalista.key("email").value(mensalista.getEmail());
+            jsMensalista.key("cpf").value(mensalista.getCpf());
+            jsMensalista.endObject();
 
             URL url = new URL("http://"+MainActivity.ipServidor+":8080/mensalista");
 
@@ -66,13 +47,20 @@ public class CadastroMensalista extends AsyncTask {
             conexao.setDoInput(true);
 
             PrintStream outputStream = new PrintStream(conexao.getOutputStream());
-            outputStream.print(jsMovimento);
+            outputStream.print(jsMensalista);
 
             conexao.connect();
 
             Scanner scanner = new Scanner(conexao.getInputStream());
             resposta = scanner.nextLine();
 
+            JSONObject jsonObject = null;
+
+            jsonObject = new JSONObject(resposta);
+            mensalista.setCodMensalista(jsonObject.getInt("codMensalista"));
+            mensalista.setCpf(jsonObject.getString("cpf"));
+            mensalista.setEmail(jsonObject.getString("email"));
+            mensalista.setNome(jsonObject.getString("nome"));
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {
@@ -80,33 +68,6 @@ public class CadastroMensalista extends AsyncTask {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
-
-    }
-
-    @Override
-    protected void onPostExecute(Object o) {
-        JSONObject jsonObject = null;
-        Mensalista mensalistaResposta = new Mensalista();
-        try {
-            jsonObject = new JSONObject(resposta);
-            mensalistaResposta.setCodMensalista(jsonObject.getInt("codMensalista"));
-            mensalistaResposta.setCpf(jsonObject.getString("cpf"));
-            mensalistaResposta.setEmail(jsonObject.getString("email"));
-            mensalistaResposta.setNome(jsonObject.getString("nome"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        // chamar outras tesks para cadastro do mensalista completo
-        CadastroTelefoneMensalista cadastroTelefoneMensalista = new CadastroTelefoneMensalista( telefone,  mensalistaResposta);
-        cadastroTelefoneMensalista.execute();
-
-        CadastroEnderecoMensalista cadastroEnderecoMensalista = new  CadastroEnderecoMensalista(endereco,  mensalistaResposta);
-        cadastroEnderecoMensalista.execute();
-
-        CadastroVeiculo cadastroVeiculo = new CadastroVeiculo( veiculo,  mensalistaResposta);
-        cadastroVeiculo.execute();
-
+        return mensalista;
     }
 }

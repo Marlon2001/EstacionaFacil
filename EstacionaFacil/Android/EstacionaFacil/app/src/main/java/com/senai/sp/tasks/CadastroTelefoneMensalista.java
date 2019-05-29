@@ -8,7 +8,6 @@ import com.senai.sp.model.Mensalista;
 import com.senai.sp.model.Telefone;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.json.JSONStringer;
 
 import java.io.IOException;
@@ -20,31 +19,29 @@ import java.util.Scanner;
 
 public class CadastroTelefoneMensalista extends AsyncTask {
 
-    Telefone telefone;
-    Mensalista mensalista;
+    private Telefone telefone;
+    private Mensalista mensalista;
 
     public CadastroTelefoneMensalista(Telefone telefone, Mensalista mensalista){
         this.telefone = telefone;
         this.mensalista = mensalista;
-
     }
-
 
     @Override
     protected Object doInBackground(Object[] objects) {
         JSONStringer jsMovimento = new JSONStringer();
 
-            //modelo do json requisitado
-//        {
-//            "codMensalista": {
-//            "codMensalista": 1
-//        },
-//            "codTelefone": {
-//            "telefone": "77 77777-7777"
-//        },
-//            "tipoTelefone": "Fixo"
-//        }
-
+        /* Modelo do json
+            {
+                "codMensalista": {
+                    "codMensalista": 1
+                },
+                "codTelefone": {
+                    "telefone": "77 77777-7777"
+                },
+                "tipoTelefone": "Fixo"
+            }
+        */
         try {
             jsMovimento.object();
             jsMovimento.key("codMensalista").object().key("codMensalista").value(mensalista.getCodMensalista()).endObject();
@@ -69,7 +66,6 @@ public class CadastroTelefoneMensalista extends AsyncTask {
 
             Scanner scanner = new Scanner(conexao.getInputStream());
             String resposta = scanner.nextLine();
-
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {
@@ -77,7 +73,6 @@ public class CadastroTelefoneMensalista extends AsyncTask {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.d("33333333333333333", "chegou 2!!!!!!!!!!!!!");
         return null;
 
     }

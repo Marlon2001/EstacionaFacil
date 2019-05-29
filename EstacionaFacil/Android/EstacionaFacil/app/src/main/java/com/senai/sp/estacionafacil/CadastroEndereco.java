@@ -3,13 +3,19 @@ package com.senai.sp.estacionafacil;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.senai.sp.model.Cidade;
 import com.senai.sp.model.Endereco;
+import com.senai.sp.model.Estado;
 import com.senai.sp.model.Mensalista;
+import com.senai.sp.tasks.ConsultarCidades;
+import com.senai.sp.tasks.ConsultarEstados;
 
 public class CadastroEndereco extends AppCompatActivity {
 
@@ -18,10 +24,10 @@ public class CadastroEndereco extends AppCompatActivity {
     private EditText txtLogradouro;
     private EditText txtBairro;
     private EditText txtNumero;
-    private Spinner spinerEstado;
-    private EditText txtCidade;
     private EditText txtDescricao;
     private Mensalista mensalista;
+    public static Spinner spinnerEstado;
+    public static Spinner spinnerCidades;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +36,13 @@ public class CadastroEndereco extends AppCompatActivity {
 
         btnProximo = findViewById(R.id.btn_proximo_endereco);
         btnVoltar = findViewById(R.id.btn_voltar_endereco);
+
         txtLogradouro = findViewById(R.id.txt_endereco_mensalista);
         txtBairro = findViewById(R.id.txt_bairro_mensalista);
         txtNumero = findViewById(R.id.txt_numero_mensalista);
-
-        // Por enquanto, vamos manter o estado e a cidade como um EditText em vez de cidade
-        spinerEstado = findViewById(R.id.spinner_estados);
-        txtCidade = findViewById(R.id.txt_cidade_mensalista);
         txtDescricao = findViewById(R.id.txt_descricao_mensalista);
+        spinnerEstado = findViewById(R.id.spinner_estados);
+        spinnerCidades = findViewById(R.id.spinner_cidades);
 
         Intent intent = getIntent();
         Mensalista mensalistaIntent = (Mensalista) intent.getSerializableExtra("mensalista");
@@ -50,8 +55,6 @@ public class CadastroEndereco extends AppCompatActivity {
             txtLogradouro.setText(enderecoIntent.getLogradouro());
             txtBairro.setText(enderecoIntent.getBairro());
             txtNumero.setText(enderecoIntent.getNumero());
-
-            txtCidade.setText(enderecoIntent.getCidade());
             txtDescricao.setText(enderecoIntent.getDescricao());
         }
 
@@ -60,7 +63,6 @@ public class CadastroEndereco extends AppCompatActivity {
             public void onClick(View v) {
             Intent cadastroMensalista = new Intent(CadastroEndereco.this, CadastroMensalistaActivity.class);
             cadastroMensalista.putExtra("mensalista", mensalista);
-
             startActivity(cadastroMensalista);
             }
         });
@@ -76,9 +78,11 @@ public class CadastroEndereco extends AppCompatActivity {
             endereco.setNumero(txtNumero.getText().toString());
             endereco.setDescricao(txtDescricao.getText().toString());
 
-            //arrumar o cadastro de cidade e endereco
-            endereco.setCidade(1);
-            endereco.setEstado("SP");
+            Cidade cidade = (Cidade) spinnerCidades.getSelectedItem();
+            Estado estado = (Estado) spinnerEstado.getSelectedItem();
+
+            endereco.setEstado(estado.getCodEstado());
+            endereco.setCidade(cidade.getCodCidade());
 
             Intent cadastrarTelefone = new Intent(CadastroEndereco.this, CadastroTelefone.class);
             cadastrarTelefone.putExtra("mensalista", mensalista);
@@ -87,5 +91,26 @@ public class CadastroEndereco extends AppCompatActivity {
             startActivity(cadastrarTelefone);
             }
         });
+
+        spinnerEstado.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Estado estado = (Estado) parent.getItemAtPosition(position);
+                ConsultarCidades consultarCidades = new ConsultarCidades(CadastroEndereco.this, estado.getCodEstado());
+                consultarCidades.execute();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ConsultarEstados consultarEstados = new ConsultarEstados(CadastroEndereco.this);
+        consultarEstados.execute();
     }
 }

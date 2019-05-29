@@ -2,15 +2,15 @@ package com.senai.sp.model;
 
 public class Cidade {
 
-    private Long codCidade;
+    private int codCidade;
     private String nomeCidade;
-    private Estado codEstado;
+    private int codEstado;
 
-    public Long getCodCidade() {
+    public int getCodCidade() {
         return codCidade;
     }
 
-    public void setCodCidade(Long codCidade) {
+    public void setCodCidade(int codCidade) {
         this.codCidade = codCidade;
     }
 
@@ -22,20 +22,16 @@ public class Cidade {
         this.nomeCidade = nomeCidade;
     }
 
-    public Estado getCodEstado() {
+    public int getCodEstado() {
         return codEstado;
     }
 
-    public void setCodEstado(Estado codEstado) {
+    public void setCodEstado(int codEstado) {
         this.codEstado = codEstado;
     }
 
     @Override
     public String toString() {
-        return "Cidade{" +
-                "codCidade=" + codCidade +
-                ", nomeCidade='" + nomeCidade + '\'' +
-                ", codEstado=" + codEstado +
-                '}';
+        return this.getNomeCidade();
     }
 }

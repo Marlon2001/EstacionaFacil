@@ -17,43 +17,48 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
-public class CadastroVeiculo extends AsyncTask {
-    Veiculo veiculo;
-    Mensalista mensalista;
-    public CadastroVeiculo(Veiculo veiculo, Mensalista mensalista){
+public class CadastroVeiculoMensalista extends AsyncTask {
+
+    private Veiculo veiculo;
+    private Mensalista mensalista;
+
+    public CadastroVeiculoMensalista(Veiculo veiculo, Mensalista mensalista){
         this.veiculo = veiculo;
         this.mensalista = mensalista;
     }
 
     @Override
     protected Object doInBackground(Object[] objects) {
+        JSONStringer jsVeiculo = new JSONStringer();
 
-
-
-        JSONStringer jsMovimento = new JSONStringer();
-
-        //modelo do json requisitado
-//        {
-//
-//            "placa": "ASD-5854",
-//            "modelo": "FordK",
-//            "anoVeiculo": "2018",
-//            "fabricante": {
-//            "codFabricante": 1
-//        },
-//            "codMensalista": {
-//            "codMensalista": 1
-//        }
-//        }
+        /* Modelo do json
+            {
+                "placa": "ASD-5854",
+                "modelo": "FordK",
+                "anoVeiculo": "2018",
+                "fabricante": {
+                    "codFabricante": 1
+                },
+                "codMensalista": {
+                    "codMensalista": 1
+                }
+            }
+        */
 
         try {
-            jsMovimento.object();
-                jsMovimento.key("placa").value(veiculo.getPlaca());
-                jsMovimento.key("modelo").value(veiculo.getModelo());
-                jsMovimento.key("anoVeiculo").value(veiculo.getAnoVeiculo());
-                jsMovimento.key("codFabricante").object().key("codFabricante").value(veiculo.getCodFabricante()).endObject();
-                jsMovimento.key("codMensalista").object().key("codMensalista").value(mensalista.getCodMensalista()).endObject();
-            jsMovimento.endObject();
+            jsVeiculo.object();
+                jsVeiculo.key("placa").value(veiculo.getPlaca());
+                jsVeiculo.key("modelo").value(veiculo.getModelo());
+                jsVeiculo.key("anoVeiculo").value(veiculo.getAnoVeiculo());
+                jsVeiculo.key("fabricante").object()
+                        .key("codFabricante").value(veiculo.getCodFabricante())
+                .endObject();
+                jsVeiculo.key("codMensalista").object()
+                        .key("codMensalista").value(mensalista.getCodMensalista())
+                .endObject();
+            jsVeiculo.endObject();
+
+            Log.d("VEICULO --- ", jsVeiculo.toString());
 
             URL url = new URL("http://"+ MainActivity.ipServidor+":8080/veiculo");
 
@@ -66,13 +71,12 @@ public class CadastroVeiculo extends AsyncTask {
             conexao.setDoInput(true);
 
             PrintStream outputStream = new PrintStream(conexao.getOutputStream());
-            outputStream.print(jsMovimento);
+            outputStream.print(jsVeiculo);
 
             conexao.connect();
 
             Scanner scanner = new Scanner(conexao.getInputStream());
             String resposta = scanner.nextLine();
-
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {
@@ -80,8 +84,6 @@ public class CadastroVeiculo extends AsyncTask {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.d("33333333333333333", "chegou 3!!!!!!!!!!!!!");
         return null;
-
     }
 }
