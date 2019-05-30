@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.senai.sp.model.Telefone;
+import com.senai.sp.tasks.CadastroTelefoneMensalista;
 import com.senai.sp.tasks.CarregarTelefoneMensalista;
 
 public class TelefoneMensalistaActivity extends AppCompatActivity {
@@ -29,7 +31,10 @@ public class TelefoneMensalistaActivity extends AppCompatActivity {
         btnNovoTelefone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent abrirCadastroTelefone = new Intent(TelefoneMensalistaActivity.this, CadastroNovoTelefone.class);
+                abrirCadastroTelefone.putExtra("codMensalista", codMensalista);
 
+                startActivity(abrirCadastroTelefone);
             }
         });
     }

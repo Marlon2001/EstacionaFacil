@@ -54,7 +54,7 @@ public class CadastroMensalistaActivity extends AppCompatActivity {
             mensalista.setEmail(txtEmail.getText().toString());
             mensalista.setCpf(txtCpf.getText().toString());
 
-            Intent cadastroEndereco = new Intent(CadastroMensalistaActivity.this, CadastroEnderecoActivity.class);
+            Intent cadastroEndereco = new Intent(CadastroMensalistaActivity.this, CadastroEnderecoMensalistaActivity.class);
             cadastroEndereco.putExtra("mensalista", mensalista);
 
             startActivity(cadastroEndereco);

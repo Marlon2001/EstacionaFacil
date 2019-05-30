@@ -51,17 +51,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".CadastroVeiculoActivity">
+        <activity android:name=".CadastroVeiculoMensalistaActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".CadastroEnderecoActivity">
+        <activity android:name=".CadastroEnderecoMensalistaActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".CadastroTelefoneActivity">
+        <activity android:name=".CadastroTelefoneMensalistaActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -71,7 +71,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".TelefoneMensalistaActivity"></activity>
+        <activity android:name=".TelefoneMensalistaActivity" />
+        <activity android:name=".CadastroNovoTelefone"></activity>
     </application>
 
 </manifest>
