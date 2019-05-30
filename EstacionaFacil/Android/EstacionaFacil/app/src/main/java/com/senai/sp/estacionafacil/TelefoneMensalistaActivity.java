@@ -3,6 +3,7 @@ package com.senai.sp.estacionafacil;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -23,10 +24,11 @@ public class TelefoneMensalistaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_telefone_mensalista);
 
         listTelefone = findViewById(R.id.list_telefone);
-        btnNovoTelefone = findViewById(R.id.btn_telefone_mensalista);
+        btnNovoTelefone = findViewById(R.id.btn_novo_telefone);
 
         Intent intent = getIntent();
         codMensalista = intent.getIntExtra("codMensalista", 0);
+        Log.d("AAAAAAAAA", codMensalista+"");
 
         btnNovoTelefone.setOnClickListener(new View.OnClickListener() {
             @Override

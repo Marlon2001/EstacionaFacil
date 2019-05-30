@@ -47,7 +47,7 @@ public class CarregarTelefoneMensalista extends AsyncTask {
     @Override
     protected Object doInBackground(Object[] objects) {
         try {
-            URL url = new URL("http://"+ MainActivity.ipServidor+":8080/telefone/"+codMensalista);
+            URL url = new URL("http://"+ MainActivity.ipServidor+":8080/telefoneMensalista/"+codMensalista);
 
             HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
             InputStream inputStream = conexao.getInputStream();
@@ -69,8 +69,8 @@ public class CarregarTelefoneMensalista extends AsyncTask {
             for(int i = 0; i < jsonArray.length(); i++){
                 JSONObject jo = (JSONObject) jsonArray.get(i);
                 telefone = new Telefone();
-                telefone.setCodTelefone(jo.getInt("codTelefone"));
-                telefone.setTelefone(jo.getString("telefone"));
+                telefone.setCodTelefone(jo.getJSONObject("codTelefone").getInt("codTelefone"));
+                telefone.setTelefone(jo.getJSONObject("codTelefone").getString("telefone"));
                 telefone.setTipoTelefone(jo.getString("tipoTelefone"));
                 listTelefones.add(telefone);
             }

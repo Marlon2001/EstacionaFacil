@@ -61,17 +61,17 @@ public class MensalistaAdapter extends BaseAdapter {
         btnVeiculos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent abrirTelefoneMensalista = new Intent(visualizarMensalistasActivity, TelefoneMensalistaActivity.class);
-                abrirTelefoneMensalista.putExtra("codMensalista", mensalista.getCodMensalista());
 
-                visualizarMensalistasActivity.startActivity(abrirTelefoneMensalista);
             }
         });
 
         btnTelefone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            Intent abrirTelefoneMensalista = new Intent(visualizarMensalistasActivity, TelefoneMensalistaActivity.class);
+            abrirTelefoneMensalista.putExtra("codMensalista", mensalista.getCodMensalista());
 
+            visualizarMensalistasActivity.startActivity(abrirTelefoneMensalista);
             }
         });
 
