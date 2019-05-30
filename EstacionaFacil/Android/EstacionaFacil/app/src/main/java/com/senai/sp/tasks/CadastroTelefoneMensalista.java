@@ -79,10 +79,5 @@ public class CadastroTelefoneMensalista extends AsyncTask {
             e.printStackTrace();
         }
         return null;
-
     }
-
-
-
-
 }
