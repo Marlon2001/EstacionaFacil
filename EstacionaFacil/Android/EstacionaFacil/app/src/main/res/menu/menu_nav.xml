@@ -19,8 +19,8 @@
     <item android:title="Mensalistas">
         <menu>
             <item
-                android:id="@+id/visualizar_mensalista"
-                android:title="Visualizar mensalista"
+                android:id="@+id/visualizar_mensalistas"
+                android:title="Visualizar mensalistas"
                 android:icon="@drawable/ic_visualizar_mensalista"/>
             <item
                 android:id="@+id/cadastrar_mensalista"

@@ -6,10 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.senai.sp.model.Mensalista;
-import com.senai.sp.tasks.CadastroMensalista;
 
 public class CadastroMensalistaActivity extends AppCompatActivity {
 
@@ -56,7 +54,7 @@ public class CadastroMensalistaActivity extends AppCompatActivity {
             mensalista.setEmail(txtEmail.getText().toString());
             mensalista.setCpf(txtCpf.getText().toString());
 
-            Intent cadastroEndereco = new Intent(CadastroMensalistaActivity.this, CadastroEndereco.class);
+            Intent cadastroEndereco = new Intent(CadastroMensalistaActivity.this, CadastroEnderecoActivity.class);
             cadastroEndereco.putExtra("mensalista", mensalista);
 
             startActivity(cadastroEndereco);

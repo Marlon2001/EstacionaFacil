@@ -19,7 +19,7 @@ import com.senai.sp.tasks.CadastroVeiculoMensalista;
 
 import java.util.concurrent.ExecutionException;
 
-public class CadastroVeiculo extends AppCompatActivity {
+public class CadastroVeiculoActivity extends AppCompatActivity {
 
     private Button btnFinalizar;
     private Button btnCancelar;
@@ -59,43 +59,43 @@ public class CadastroVeiculo extends AppCompatActivity {
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent abrirMainActivtity = new Intent(CadastroVeiculo.this, MainActivity.class);
-                startActivity(abrirMainActivtity);
+            Intent abrirMainActivtity = new Intent(CadastroVeiculoActivity.this, MainActivity.class);
+            startActivity(abrirMainActivtity);
             }
         });
 
         btnFinalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Veiculo veiculo = new Veiculo();
-                // Populando o objeto veiculo, e chamandos as tasks de cadastro
-                veiculo.setPlaca(txtPlaca.getText().toString());
-                veiculo.setModelo(txtModelo.getText().toString());
-                veiculo.setAnoVeiculo(txtAno.getText().toString());
-                veiculo.setCodFabricante(2);
+            Veiculo veiculo = new Veiculo();
+            // Populando o objeto veiculo, e chamandos as tasks de cadastro
+            veiculo.setPlaca(txtPlaca.getText().toString());
+            veiculo.setModelo(txtModelo.getText().toString());
+            veiculo.setAnoVeiculo(txtAno.getText().toString());
+            veiculo.setCodFabricante(2);
 
-                CadastroMensalista cadastroMensalista = new CadastroMensalista(CadastroVeiculo.this, mensalista);
+            CadastroMensalista cadastroMensalista = new CadastroMensalista(CadastroVeiculoActivity.this, mensalista);
 
-                try {
-                    Mensalista mensalista = (Mensalista) cadastroMensalista.execute().get();
+            try {
+                Mensalista mensalista = (Mensalista) cadastroMensalista.execute().get();
 
-                    CadastroEnderecoMensalista cadastroEnderecoMensalista = new CadastroEnderecoMensalista(endereco, mensalista);
-                    cadastroEnderecoMensalista.execute();
+                CadastroEnderecoMensalista cadastroEnderecoMensalista = new CadastroEnderecoMensalista(endereco, mensalista);
+                cadastroEnderecoMensalista.execute();
 
-                    CadastroTelefoneMensalista cadastroTelefoneMensalista = new CadastroTelefoneMensalista(telefone, mensalista);
-                    cadastroTelefoneMensalista.execute();
+                CadastroTelefoneMensalista cadastroTelefoneMensalista = new CadastroTelefoneMensalista(telefone, mensalista);
+                cadastroTelefoneMensalista.execute();
 
-                    CadastroVeiculoMensalista cadastroVeiculoMensalista = new CadastroVeiculoMensalista(veiculo, mensalista);
-                    cadastroVeiculoMensalista.execute();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } finally {
-                    Toast.makeText(CadastroVeiculo.this, "Cadastrado", Toast.LENGTH_SHORT).show();
-                    Intent abrirMainActivity = new Intent(CadastroVeiculo.this, MainActivity.class);
-                    startActivity(abrirMainActivity);
-                }
+                CadastroVeiculoMensalista cadastroVeiculoMensalista = new CadastroVeiculoMensalista(veiculo, mensalista);
+                cadastroVeiculoMensalista.execute();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                Toast.makeText(CadastroVeiculoActivity.this, "Cadastrado", Toast.LENGTH_SHORT).show();
+                Intent abrirMainActivity = new Intent(CadastroVeiculoActivity.this, MainActivity.class);
+                startActivity(abrirMainActivity);
+            }
             }
         });
     }
