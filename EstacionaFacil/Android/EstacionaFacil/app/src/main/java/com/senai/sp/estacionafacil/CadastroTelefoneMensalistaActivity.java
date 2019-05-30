@@ -11,7 +11,7 @@ import com.senai.sp.model.Endereco;
 import com.senai.sp.model.Mensalista;
 import com.senai.sp.model.Telefone;
 
-public class CadastroTelefoneActivity extends AppCompatActivity {
+public class CadastroTelefoneMensalistaActivity extends AppCompatActivity {
 
     private Button btnProximo;
     private Button btnVoltar;
@@ -49,7 +49,7 @@ public class CadastroTelefoneActivity extends AppCompatActivity {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent cadastroEndereco = new Intent(CadastroTelefoneActivity.this, CadastroEnderecoActivity.class);
+            Intent cadastroEndereco = new Intent(CadastroTelefoneMensalistaActivity.this, CadastroEnderecoMensalistaActivity.class);
             cadastroEndereco.putExtra("endereco", endereco);
             startActivity(cadastroEndereco);
             }
@@ -64,7 +64,7 @@ public class CadastroTelefoneActivity extends AppCompatActivity {
             telefone.setTelefone(txtTelefone.getText().toString());
             telefone.setTipoTelefone(txtTipotelefone.getText().toString());
 
-            Intent cadastrarVeiculo = new Intent(CadastroTelefoneActivity.this, CadastroVeiculoActivity.class);
+            Intent cadastrarVeiculo = new Intent(CadastroTelefoneMensalistaActivity.this, CadastroVeiculoMensalistaActivity.class);
             cadastrarVeiculo.putExtra("mensalista", mensalista);
             cadastrarVeiculo.putExtra("endereco", endereco);
             cadastrarVeiculo.putExtra("telefone", telefone);

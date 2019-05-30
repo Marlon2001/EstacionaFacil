@@ -19,7 +19,7 @@ import com.senai.sp.tasks.CadastroVeiculoMensalista;
 
 import java.util.concurrent.ExecutionException;
 
-public class CadastroVeiculoActivity extends AppCompatActivity {
+public class CadastroVeiculoMensalistaActivity extends AppCompatActivity {
 
     private Button btnFinalizar;
     private Button btnCancelar;
@@ -59,7 +59,7 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent abrirMainActivtity = new Intent(CadastroVeiculoActivity.this, MainActivity.class);
+            Intent abrirMainActivtity = new Intent(CadastroVeiculoMensalistaActivity.this, MainActivity.class);
             startActivity(abrirMainActivtity);
             }
         });
@@ -74,7 +74,7 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
             veiculo.setAnoVeiculo(txtAno.getText().toString());
             veiculo.setCodFabricante(2);
 
-            CadastroMensalista cadastroMensalista = new CadastroMensalista(CadastroVeiculoActivity.this, mensalista);
+            CadastroMensalista cadastroMensalista = new CadastroMensalista(CadastroVeiculoMensalistaActivity.this, mensalista);
 
             try {
                 Mensalista mensalista = (Mensalista) cadastroMensalista.execute().get();
@@ -92,8 +92,8 @@ public class CadastroVeiculoActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
-                Toast.makeText(CadastroVeiculoActivity.this, "Cadastrado", Toast.LENGTH_SHORT).show();
-                Intent abrirMainActivity = new Intent(CadastroVeiculoActivity.this, MainActivity.class);
+                Toast.makeText(CadastroVeiculoMensalistaActivity.this, "Cadastrado", Toast.LENGTH_SHORT).show();
+                Intent abrirMainActivity = new Intent(CadastroVeiculoMensalistaActivity.this, MainActivity.class);
                 startActivity(abrirMainActivity);
             }
             }

@@ -3,7 +3,7 @@ package com.senai.sp.tasks;
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
 
-import com.senai.sp.estacionafacil.CadastroEnderecoActivity;
+import com.senai.sp.estacionafacil.CadastroEnderecoMensalistaActivity;
 import com.senai.sp.estacionafacil.MainActivity;
 import com.senai.sp.model.Cidade;
 
@@ -22,11 +22,11 @@ import java.util.ArrayList;
 
 public class ConsultarCidades extends AsyncTask {
 
-    private CadastroEnderecoActivity cadastroEndereco;
+    private CadastroEnderecoMensalistaActivity cadastroEndereco;
     private ArrayList<Cidade> listCidades;
     private int codEstado;
 
-    public ConsultarCidades(CadastroEnderecoActivity cadastroEndereco, int codEstado) {
+    public ConsultarCidades(CadastroEnderecoMensalistaActivity cadastroEndereco, int codEstado) {
         this.cadastroEndereco = cadastroEndereco;
         this.codEstado = codEstado;
     }
@@ -74,6 +74,6 @@ public class ConsultarCidades extends AsyncTask {
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
         ArrayAdapter arrayAdapter = new ArrayAdapter(cadastroEndereco, android.R.layout.simple_list_item_1, listCidades);
-        CadastroEnderecoActivity.spinnerCidades.setAdapter(arrayAdapter);
+        CadastroEnderecoMensalistaActivity.spinnerCidades.setAdapter(arrayAdapter);
     }
 }
