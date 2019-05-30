@@ -22,8 +22,8 @@ public class TelefoneResource {
 	
 	@Autowired
 	TelefoneMensalistaRepository telefoneMensalistaRepository;
-	
-	
+		
+		
 	@GetMapping
 	public List<Telefone> getTelefones(){
 		return telefoneRepository.findAll();
