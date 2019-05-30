@@ -11,13 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
-
-import com.senai.sp.tasks.CarregarListaMovimentacao;
-import com.senai.sp.tasks.ConsultarSaida;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -58,14 +51,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(listarMovimentacao);
                 break;
             case R.id.menu_entrada:
-                Intent cadastrarMovimentacao = new Intent(MainActivity.this, CadastroActivity.class);
+                Intent cadastrarMovimentacao = new Intent(MainActivity.this, CadastroMovimentacaoActivity.class);
                 startActivity(cadastrarMovimentacao);
                 break;
             case R.id.menu_saida:
 //                ConsultarSaida consultarSaida = new ConsultarSaida(MainActivity.this, movimentacao);
 //                consultarSaida.execute();
                 break;
-            case R.id.visualizar_mensalista:
+            case R.id.visualizar_mensalistas:
+                Intent abrirVisualizarMensalistas = new Intent(this, VisualizarMensalistasActivity.class);
+                startActivity(abrirVisualizarMensalistas);
                 break;
             case R.id.cadastrar_mensalista:
                 Intent cadastrarMensalista = new Intent(this, CadastroMensalistaActivity.class);

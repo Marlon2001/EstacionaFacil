@@ -3,7 +3,7 @@ package com.senai.sp.tasks;
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
 
-import com.senai.sp.estacionafacil.CadastroEndereco;
+import com.senai.sp.estacionafacil.CadastroEnderecoActivity;
 import com.senai.sp.estacionafacil.MainActivity;
 import com.senai.sp.model.Estado;
 
@@ -23,9 +23,9 @@ import java.util.ArrayList;
 public class ConsultarEstados extends AsyncTask {
 
     private ArrayList<Estado> listEstados;
-    private CadastroEndereco cadastroEndereco;
+    private CadastroEnderecoActivity cadastroEndereco;
 
-    public ConsultarEstados(CadastroEndereco cadastroEndereco) {
+    public ConsultarEstados(CadastroEnderecoActivity cadastroEndereco) {
         this.cadastroEndereco = cadastroEndereco;
     }
 
@@ -72,7 +72,7 @@ public class ConsultarEstados extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         ArrayAdapter arrayAdapter = new ArrayAdapter(cadastroEndereco, android.R.layout.simple_list_item_1, listEstados);
-        CadastroEndereco.spinnerEstado.setAdapter(arrayAdapter);
+        CadastroEnderecoActivity.spinnerEstado.setAdapter(arrayAdapter);
         super.onPostExecute(o);
     }
 }

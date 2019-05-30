@@ -12,10 +12,7 @@ import com.senai.sp.model.Movimentacao;
 import com.senai.sp.tasks.CadastrarSaida;
 import com.senai.sp.utils.Data;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-public class VisualizarSaida extends AppCompatActivity {
+public class VisualizarSaidaActivity extends AppCompatActivity {
 
     private EditText txtPlaca;
     private EditText txtModelo;
@@ -42,7 +39,7 @@ public class VisualizarSaida extends AppCompatActivity {
 
         Intent visualizarSaida = getIntent();
         final Movimentacao movimentacao = (Movimentacao) visualizarSaida.getSerializableExtra("movimentacao");
-        Toast.makeText(VisualizarSaida.this, String.valueOf(movimentacao.getId()), Toast.LENGTH_LONG).show();
+        Toast.makeText(VisualizarSaidaActivity.this, String.valueOf(movimentacao.getId()), Toast.LENGTH_LONG).show();
         if(movimentacao != null){
             try {
                 txtPlaca.setText(movimentacao.getPlaca());
@@ -59,7 +56,7 @@ public class VisualizarSaida extends AppCompatActivity {
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            CadastrarSaida cadastrarSaida = new CadastrarSaida(VisualizarSaida.this, movimentacao);
+            CadastrarSaida cadastrarSaida = new CadastrarSaida(VisualizarSaidaActivity.this, movimentacao);
             cadastrarSaida.execute();
             }
         });

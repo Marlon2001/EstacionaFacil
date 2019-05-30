@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 import com.senai.sp.tasks.CadastrarEntrada;
 
-public class CadastroActivity extends AppCompatActivity {
+public class CadastroMovimentacaoActivity extends AppCompatActivity {
 
     private Button btnCadastro;
     private EditText txtPlaca;

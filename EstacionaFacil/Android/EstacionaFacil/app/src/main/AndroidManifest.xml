@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.senai.sp.estacionafacil">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -22,31 +21,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".CadastroActivity">
+        <activity android:name=".CadastroMovimentacaoActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
         <activity android:name=".ComprovanteActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
         <activity android:name=".CadastrarPrecoActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
-        <activity android:name=".VisualizarSaida">
+        <activity android:name=".VisualizarSaidaActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
         <activity android:name=".MovimentacaoActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -57,21 +51,27 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".CadastroVeiculo">
+        <activity android:name=".CadastroVeiculoActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".CadastroEndereco">
+        <activity android:name=".CadastroEnderecoActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".CadastroTelefone">
+        <activity android:name=".CadastroTelefoneActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity android:name=".VisualizarMensalistasActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".TelefoneMensalistaActivity"></activity>
     </application>
 
 </manifest>

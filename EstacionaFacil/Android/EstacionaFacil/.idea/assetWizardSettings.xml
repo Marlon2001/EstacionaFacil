@@ -23,7 +23,9 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/hardware/ic_keyboard_arrow_down_black_24dp.xml" />
+
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/alert/ic_error_black_24dp.xml" />
+
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -33,7 +35,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_spinner_arrow" />
+
+                                      <entry key="outputName" value="ic_alert" />
+                                      <entry key="themeColor" value="e53d44" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -44,12 +48,29 @@
                                 <PersistentState>
                                   <option name="children">
                                     <map>
+
+                                      <entry key="clipArt">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="e51500" />
+                                                <entry key="paddingPercent" value="-5" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+
                                       <entry key="clipartAsset">
                                         <value>
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/hardware/ic_keyboard_arrow_down_black_24dp.xml" />
+
+          
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/alert/ic_error_black_24dp.xml" />
+
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -59,7 +80,11 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="spinner_arrow" />
+
+                                      <entry key="backgroundColor" value="cacaca" />
+                                      <entry key="iconShape" value="CIRCLE" />
+                                      <entry key="outputName" value="ic_delete" />
+
                                     </map>
                                   </option>
                                 </PersistentState>
