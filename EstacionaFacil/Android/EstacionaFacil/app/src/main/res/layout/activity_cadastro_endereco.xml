@@ -80,11 +80,10 @@
                 android:textAlignment="viewStart"
                 android:textSize="24sp" />
             <Spinner
-                android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:id="@+id/spinner_estados"
                 android:drawSelectorOnTop="true"
-                android:textSize="24sp" />
+                style="@style/spinner_style"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -94,11 +93,10 @@
                 android:textAlignment="viewStart"
                 android:textSize="24sp" />
             <Spinner
-                android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:id="@+id/spinner_cidades"
                 android:drawSelectorOnTop="true"
-                android:textSize="24sp" />
+                style="@style/spinner_style"/>
 
             <TextView
                 android:layout_width="match_parent"
