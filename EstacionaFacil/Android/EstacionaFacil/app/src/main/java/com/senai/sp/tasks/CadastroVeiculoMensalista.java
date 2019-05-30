@@ -58,8 +58,6 @@ public class CadastroVeiculoMensalista extends AsyncTask {
                 .endObject();
             jsVeiculo.endObject();
 
-            Log.d("VEICULO --- ", jsVeiculo.toString());
-
             URL url = new URL("http://"+ MainActivity.ipServidor+":8080/veiculo");
 
             HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
