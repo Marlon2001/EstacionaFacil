@@ -26,6 +26,14 @@ public class TelefoneMensalista {
 	private Telefone codTelefone;
 	@Column(name = "tipo_telefone")
 	private String tipoTelefone;
+	
+	public void setCodTelefoneMensalista(Long codTelefoneMensalista) {
+		this.codTelefoneMensalista = codTelefoneMensalista;
+	}
+	public Long getCodTelefoneMensalista() {
+		return codTelefoneMensalista;
+	}
+	
 
 	public Mensalista getCodMensalista() {
 		return codMensalista;

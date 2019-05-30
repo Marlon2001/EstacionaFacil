@@ -1,4 +1,5 @@
-SELECT 
+SELECT
+	
     mensalista.cod_mensalista,
     mensalista.nome,
     mensalista.email,
@@ -15,14 +16,13 @@ FROM
     tbl_mensalista AS mensalista
     
         INNER JOIN
-    tbl_mensalista_telefone AS mt ON mt.cod_mensalista = mensalista.cod_mensalista
+    tbl_telefone_mensalista AS mt ON mt.cod_mensalista = mensalista.cod_mensalista
         INNER JOIN
     tbl_telefone AS telefone ON telefone.cod_telefone = mt.cod_telefone
         INNER JOIN
         
-    tbl_veiculo_mensalista AS vm ON vm.cod_mensalista = mensalista.cod_mensalista
-        INNER JOIN
-    tbl_veiculo AS veiculo ON veiculo.cod_veiculo = vm.cod_veiculo
+    
+    tbl_veiculo AS veiculo ON veiculo.cod_mensalista= mensalista.cod_mensalista
     
         INNER JOIN
     tbl_fabricante AS fabricante ON fabricante.cod_fabricante = veiculo.cod_fabricante
@@ -35,5 +35,10 @@ FROM
         INNER JOIN
     tbl_cidade AS cidade ON cidade.cod_cidade = endereco.cod_cidade
         INNER JOIN
-    tbl_estado AS estado ON estado.cod_estado = cidade.cod_estado where mensalista.cod_mensalista =1; 
+    tbl_estado AS estado ON estado.cod_estado = cidade.cod_estado; 
+    
+    select * from tbl_veiculo;
+    
+    
+    delete from tbl_mensalista where cod_mensalista = 1 ;
 

@@ -11,5 +11,5 @@ public interface EnderecoRepository  extends JpaRepository<Endereco, Long> {
 	@Query("SELECT e FROM Endereco e WHERE e.codEndereco = ?1")
 	Endereco findByCod(Long codEndereco);
 	
-
+	
 }

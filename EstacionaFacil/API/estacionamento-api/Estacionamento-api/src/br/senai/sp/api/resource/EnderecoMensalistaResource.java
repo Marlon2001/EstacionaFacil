@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.senai.sp.api.model.Cidade;
 import br.senai.sp.api.model.Endereco;
 import br.senai.sp.api.model.EnderecoMensalista;
+import br.senai.sp.api.model.Mensalista;
 import br.senai.sp.api.repository.CidadeRepository;
 import br.senai.sp.api.repository.EnderecoMensalistaRepository;
 import br.senai.sp.api.repository.EnderecoRepository;
@@ -37,6 +39,13 @@ public class EnderecoMensalistaResource {
 	@GetMapping
 	public List<EnderecoMensalista> getEnderecoMensalista(){
 		return enderecoMensalistaRepository.findAll();
+	}
+	
+	@GetMapping("/{codMensalista}")
+	public List<EnderecoMensalista> getEnderecoMensalista(@PathVariable Long codMensalista){
+		Mensalista m = new Mensalista();
+		m.setCodMensalista(codMensalista);
+		return enderecoMensalistaRepository.findByCodMensalista(m);
 	}
 	
 	@PostMapping
