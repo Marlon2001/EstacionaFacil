@@ -1,13 +1,11 @@
 package com.senai.sp.tasks;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 
-import com.senai.sp.estacionafacil.ComprovanteActivity;
 import com.senai.sp.estacionafacil.MainActivity;
-import com.senai.sp.estacionafacil.VisualizarSaida;
+import com.senai.sp.estacionafacil.VisualizarSaidaActivity;
 import com.senai.sp.model.Movimentacao;
 
 import org.json.JSONException;
@@ -74,7 +72,7 @@ public class ConsultarSaida extends AsyncTask {
 
     @Override
     protected void onPostExecute(Object o) {
-        Intent visualizarSaida = new Intent(context, VisualizarSaida.class);
+        Intent visualizarSaida = new Intent(context, VisualizarSaidaActivity.class);
         visualizarSaida.putExtra("movimentacao", movimentacao);
         context.startActivity(visualizarSaida);
     }

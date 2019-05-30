@@ -3,7 +3,6 @@ package com.senai.sp.estacionafacil;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -17,7 +16,7 @@ import com.senai.sp.model.Mensalista;
 import com.senai.sp.tasks.ConsultarCidades;
 import com.senai.sp.tasks.ConsultarEstados;
 
-public class CadastroEndereco extends AppCompatActivity {
+public class CadastroEnderecoActivity extends AppCompatActivity {
 
     private Button btnProximo;
     private Button btnVoltar;
@@ -61,7 +60,7 @@ public class CadastroEndereco extends AppCompatActivity {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent cadastroMensalista = new Intent(CadastroEndereco.this, CadastroMensalistaActivity.class);
+            Intent cadastroMensalista = new Intent(CadastroEnderecoActivity.this, CadastroMensalistaActivity.class);
             cadastroMensalista.putExtra("mensalista", mensalista);
             startActivity(cadastroMensalista);
             }
@@ -84,7 +83,7 @@ public class CadastroEndereco extends AppCompatActivity {
             endereco.setEstado(estado.getCodEstado());
             endereco.setCidade(cidade.getCodCidade());
 
-            Intent cadastrarTelefone = new Intent(CadastroEndereco.this, CadastroTelefone.class);
+            Intent cadastrarTelefone = new Intent(CadastroEnderecoActivity.this, CadastroTelefoneActivity.class);
             cadastrarTelefone.putExtra("mensalista", mensalista);
             cadastrarTelefone.putExtra("endereco", endereco);
 
@@ -96,7 +95,7 @@ public class CadastroEndereco extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Estado estado = (Estado) parent.getItemAtPosition(position);
-                ConsultarCidades consultarCidades = new ConsultarCidades(CadastroEndereco.this, estado.getCodEstado());
+                ConsultarCidades consultarCidades = new ConsultarCidades(CadastroEnderecoActivity.this, estado.getCodEstado());
                 consultarCidades.execute();
             }
 
@@ -110,7 +109,7 @@ public class CadastroEndereco extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ConsultarEstados consultarEstados = new ConsultarEstados(CadastroEndereco.this);
+        ConsultarEstados consultarEstados = new ConsultarEstados(CadastroEnderecoActivity.this);
         consultarEstados.execute();
     }
 }
