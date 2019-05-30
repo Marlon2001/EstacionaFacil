@@ -23,4 +23,6 @@ public class CidadeResource {
 		return cidadeRepository.getCidadeByCodEstado(cod);
 	}
 
+	
+	
 }
