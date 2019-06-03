@@ -14,18 +14,22 @@ import android.widget.TextView;
 import com.senai.sp.estacionafacil.R;
 import com.senai.sp.estacionafacil.TelefoneMensalistaActivity;
 import com.senai.sp.model.Telefone;
+import com.senai.sp.tasks.CarregarTelefoneMensalista;
+import com.senai.sp.tasks.ExcluirTelefone;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class TelefoneAdapter extends BaseAdapter {
 
     private TelefoneMensalistaActivity telefoneMensalistaActivity;
-    private Context context;
     private List<Telefone> listTelefones;
+    private int codMensalista;
 
-    public TelefoneAdapter(TelefoneMensalistaActivity telefoneMensalistaActivity, List<Telefone> listTelefones) {
+    public TelefoneAdapter(TelefoneMensalistaActivity telefoneMensalistaActivity, List<Telefone> listTelefones, int codMensalista) {
         this.telefoneMensalistaActivity = telefoneMensalistaActivity;
         this.listTelefones = listTelefones;
+        this.codMensalista = codMensalista;
     }
 
     @Override
@@ -67,7 +71,18 @@ public class TelefoneAdapter extends BaseAdapter {
                 alBuilder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // Task de excluir telefone
+                        ExcluirTelefone excluirTelefone = new ExcluirTelefone(telefone.getCodTelefone());
+
+                        try {
+                            excluirTelefone.execute().get();
+
+                            CarregarTelefoneMensalista carregarTelefoneMensalista = new CarregarTelefoneMensalista(telefoneMensalistaActivity, codMensalista);
+                            carregarTelefoneMensalista.execute();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
                 alBuilder.setNegativeButton("Não", null);

@@ -1,10 +1,6 @@
-package br.senai.sp.utils;
-
-import org.springframework.beans.factory.annotation.Autowired;
+package br.senai.sp.utils; 
 
 import br.senai.sp.api.model.Precos;
-import br.senai.sp.api.repository.PrecosRepository;
-import br.senai.sp.api.resource.PrecosResource;
 
 public class Cobrancas {
 	

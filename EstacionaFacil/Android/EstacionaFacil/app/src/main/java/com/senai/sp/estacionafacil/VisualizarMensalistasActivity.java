@@ -26,7 +26,7 @@ public class VisualizarMensalistasActivity extends AppCompatActivity {
         btnNovoMensalista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent abrirCadastroMensalista = new Intent(VisualizarMensalistasActivity.this, CadastroMensalista.class);
+            Intent abrirCadastroMensalista = new Intent(VisualizarMensalistasActivity.this, CadastroMensalistaActivity.class);
             startActivity(abrirCadastroMensalista);
             }
         });

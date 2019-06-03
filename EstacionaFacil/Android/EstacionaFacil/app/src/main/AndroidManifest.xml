@@ -72,7 +72,9 @@
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".TelefoneMensalistaActivity" />
-        <activity android:name=".CadastroNovoTelefone"></activity>
+        <activity android:name=".CadastroNovoTelefone" />
+        <activity android:name=".VeiculoMensalistaActivity" />
+        <activity android:name=".CadastroNovoVeiculo"></activity>
     </application>
 
 </manifest>
