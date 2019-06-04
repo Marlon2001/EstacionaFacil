@@ -1,6 +1,6 @@
 package br.senai.sp.api.resource;
 
-import java.util.List;
+import java.util.List; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.mysql.cj.log.Log;
 
 import br.senai.sp.api.model.Mensalista;
 import br.senai.sp.api.model.Telefone;
@@ -22,19 +20,18 @@ import br.senai.sp.api.repository.TelefoneRepository;
 @RestController
 @RequestMapping("/telefoneMensalista")
 public class TelefoneMensalistaResource {
+	
 	@Autowired
-	TelefoneMensalistaRepository telefoneMensalistaRepository;
+	private TelefoneMensalistaRepository telefoneMensalistaRepository;
 	@Autowired
-	TelefoneRepository telefoneRepository;
+	private TelefoneRepository telefoneRepository;
 	@Autowired 
-	MensalistaRepository mensalistaRepository;
+	private MensalistaRepository mensalistaRepository;
 	
 	@GetMapping
 	public List<TelefoneMensalista> getTelefonesMensalistas(){
 		return telefoneMensalistaRepository.findAll(); 
 	}
-	
-	
 	
 	@GetMapping("{codMensalista}")
 	public List<TelefoneMensalista> getTelefonesPorMensalista(@PathVariable Long codMensalista){

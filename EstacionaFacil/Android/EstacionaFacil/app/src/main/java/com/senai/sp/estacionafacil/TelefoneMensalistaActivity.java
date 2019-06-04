@@ -28,15 +28,14 @@ public class TelefoneMensalistaActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         codMensalista = intent.getIntExtra("codMensalista", 0);
-        Log.d("AAAAAAAAA", codMensalista+"");
 
         btnNovoTelefone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent abrirCadastroTelefone = new Intent(TelefoneMensalistaActivity.this, CadastroNovoTelefone.class);
-                abrirCadastroTelefone.putExtra("codMensalista", codMensalista);
+            Intent abrirCadastroTelefone = new Intent(TelefoneMensalistaActivity.this, CadastroNovoTelefone.class);
+            abrirCadastroTelefone.putExtra("codMensalista", codMensalista);
 
-                startActivity(abrirCadastroTelefone);
+            startActivity(abrirCadastroTelefone);
             }
         });
     }

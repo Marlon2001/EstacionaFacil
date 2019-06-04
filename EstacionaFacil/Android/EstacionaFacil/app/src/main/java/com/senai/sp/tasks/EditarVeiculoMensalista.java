@@ -1,11 +1,10 @@
 package com.senai.sp.tasks;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.senai.sp.estacionafacil.MainActivity;
 import com.senai.sp.model.Mensalista;
-import com.senai.sp.model.Telefone;
+import com.senai.sp.model.Veiculo;
 
 import org.json.JSONException;
 import org.json.JSONStringer;
@@ -17,50 +16,60 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
-public class CadastroTelefoneMensalista extends AsyncTask {
+public class EditarVeiculoMensalista extends AsyncTask {
 
-    private Telefone telefone;
+    private Veiculo veiculo;
     private Mensalista mensalista;
 
-    public CadastroTelefoneMensalista(Telefone telefone, Mensalista mensalista){
-        this.telefone = telefone;
+    public EditarVeiculoMensalista(Veiculo veiculo, Mensalista mensalista) {
+        this.veiculo = veiculo;
         this.mensalista = mensalista;
     }
 
     @Override
     protected Object doInBackground(Object[] objects) {
-        JSONStringer jsMovimento = new JSONStringer();
+        JSONStringer jsVeiculo = new JSONStringer();
 
         /* Modelo do json
             {
+                "placa": "ASD-5854",
+                "modelo": "FordK",
+                "anoVeiculo": "2018",
+                "fabricante": {
+                    "codFabricante": 1
+                },
                 "codMensalista": {
                     "codMensalista": 1
-                },
-                "codTelefone": {
-                    "telefone": "77 77777-7777"
-                },
-                "tipoTelefone": "Fixo"
+                }
             }
         */
-        try {
-            jsMovimento.object();
-            jsMovimento.key("codMensalista").object().key("codMensalista").value(mensalista.getCodMensalista()).endObject();
-            jsMovimento.key("codTelefone").object().key("telefone").value(telefone.getTelefone()).endObject();
-            jsMovimento.key("tipoTelefone").value(telefone.getTipoTelefone());
-            jsMovimento.endObject();
 
-            URL url = new URL("http://"+ MainActivity.ipServidor+":8080/telefoneMensalista");
+        try {
+            jsVeiculo.object();
+            jsVeiculo.key("codVeiculo").value(veiculo.getCodVeiculo());
+            jsVeiculo.key("placa").value(veiculo.getPlaca());
+            jsVeiculo.key("modelo").value(veiculo.getModelo());
+            jsVeiculo.key("anoVeiculo").value(veiculo.getAnoVeiculo());
+            jsVeiculo.key("fabricante").object()
+                    .key("codFabricante").value(veiculo.getCodFabricante())
+                    .endObject();
+            jsVeiculo.key("codMensalista").object()
+                    .key("codMensalista").value(mensalista.getCodMensalista())
+                    .endObject();
+            jsVeiculo.endObject();
+
+            URL url = new URL("http://"+ MainActivity.ipServidor+":8080/veiculo/"+veiculo.getCodVeiculo());
 
             HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
 
             conexao.setRequestProperty("Content-Type", "application/json");
             conexao.setRequestProperty("Accept", "application/json");
-            conexao.setRequestMethod("POST");
+            conexao.setRequestMethod("PUT");
 
             conexao.setDoInput(true);
 
             PrintStream outputStream = new PrintStream(conexao.getOutputStream());
-            outputStream.print(jsMovimento);
+            outputStream.print(jsVeiculo);
 
             conexao.connect();
 
