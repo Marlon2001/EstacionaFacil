@@ -34,8 +34,8 @@ public class VisualizarMensalistasActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        super.onResume();
         CarregarListaMensalistas carregarListaMensalistas = new CarregarListaMensalistas(this);
         carregarListaMensalistas.execute();
-        super.onResume();
     }
 }

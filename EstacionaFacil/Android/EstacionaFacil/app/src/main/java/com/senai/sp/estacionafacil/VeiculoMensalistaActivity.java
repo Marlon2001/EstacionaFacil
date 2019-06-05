@@ -42,13 +42,6 @@ public class VeiculoMensalistaActivity extends AppCompatActivity {
                 startActivity(abrirCadastroVeiculo);
             }
         });
-
-        listVeiculos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
     }
 
     @Override

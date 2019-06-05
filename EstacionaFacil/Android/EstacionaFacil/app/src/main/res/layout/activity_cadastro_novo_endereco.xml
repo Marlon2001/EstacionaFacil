@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CadastroNovoEnderecoMensalista">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/relativePai">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:layout_marginBottom="48dp"
+            android:id="@+id/linear4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Endereco"
+                android:textAlignment="center"
+                android:textSize="36sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="Logradouro:"
+                android:textAlignment="viewStart"
+                android:textSize="24sp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Rua Julieta"
+                android:textSize="24sp"
+                android:id="@+id/txt_logradouro"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Bairro:"
+                android:textAlignment="viewStart"
+                android:textSize="24sp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Jd. das Rosas"
+                android:textSize="24sp"
+                android:id="@+id/txt_bairro"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Número:"
+                android:textAlignment="viewStart"
+                android:textSize="24sp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="3895"
+                android:textSize="24sp"
+                android:id="@+id/txt_numero"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Estado:"
+                android:textAlignment="viewStart"
+                android:textSize="24sp" />
+            <Spinner
+                android:layout_height="44dp"
+                android:id="@+id/spinner_estados2"
+                android:drawSelectorOnTop="true"
+                style="@style/spinner_style"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Cidade:"
+                android:textAlignment="viewStart"
+                android:textSize="24sp" />
+            <Spinner
+                android:layout_height="44dp"
+                android:id="@+id/spinner_cidades2"
+                android:drawSelectorOnTop="true"
+                style="@style/spinner_style"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Descrição:"
+                android:textAlignment="viewStart"
+                android:textSize="24sp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Casa da minha mãe"
+                android:textSize="24sp"
+                android:id="@+id/txt_descricao"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linear4">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="65dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:text="Cancelar"
+                android:textColor="@color/colorWhite"
+                android:textSize="26sp"
+                android:id="@+id/btn_cancelar_endereco"/>
+
+            <Button
+                android:id="@+id/btn_salvar_endereco"
+                android:layout_width="0dp"
+                android:layout_height="65dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:text="Salvar"
+                android:textColor="@color/colorWhite"
+                android:textSize="26sp" />
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
