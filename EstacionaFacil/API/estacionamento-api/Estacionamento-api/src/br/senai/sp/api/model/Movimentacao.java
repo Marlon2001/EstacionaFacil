@@ -29,6 +29,15 @@ public class Movimentacao {
 	private Integer tempoPermanencia;
 	@Column(name = "valor_pago")
 	private Double valorPago;
+	private String tipo;
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
 	public Long getCodMovimentacao() {
 		return codMovimentacao;

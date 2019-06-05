@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.senai.sp.api.model.Mensalista;
 import br.senai.sp.api.model.Movimentacao;
 import br.senai.sp.api.model.Precos;
 import br.senai.sp.api.repository.EstacionamentoRepository;
 import br.senai.sp.api.repository.PrecosRepository;
+import br.senai.sp.api.repository.VeiculoRapository;
 import br.senai.sp.utils.Cobrancas;
 import br.senai.sp.utils.Date;
 
@@ -35,6 +37,8 @@ public class EstacionamentoResource {
 	private EstacionamentoRepository estacionamentoRepository;
 	@Autowired
 	private PrecosRepository precosRepository;
+	@Autowired
+	private VeiculoRapository veiculoRaposytory;
 	
 	@GetMapping("/estacionados")
 	public List<Movimentacao> getEstacionados() {
@@ -52,6 +56,7 @@ public class EstacionamentoResource {
 	}
 	
 	
+	
 	@GetMapping("/orcamento/{cod_movimentacao}")
 	public ResponseEntity<Movimentacao> gerarOrcamento(@PathVariable Long cod_movimentacao, HttpServletResponse response){
 		Movimentacao movimentacao = estacionamentoRepository.findById(cod_movimentacao).get();	
@@ -67,7 +72,19 @@ public class EstacionamentoResource {
 			
 			Precos precos = precosRepository.findByDataSaidaIsNull();
 			Cobrancas cobranca = new Cobrancas();
-			Double totalAPagar = cobranca.getValorPagar(tempoPermanencia, precos);
+			
+			
+			
+			Double totalAPagar;
+			
+			//verificando o tipo da movimentação
+			if(movimentacao.getTipo().equals("D")) {
+				totalAPagar = precos.getValorDiaria();
+			}else if(veiculoRaposytory.getVeiculosByMensalista(movimentacao.getPlaca()) > 0) {
+				totalAPagar= 0.00;
+			}else {
+				totalAPagar = cobranca.getValorPagar(tempoPermanencia, precos);
+			}
 			
 			movimentacao.setTempoPermanencia(Integer.parseInt(tempoPermanencia.toString()));
 			movimentacao.setValorPago(totalAPagar);
@@ -92,10 +109,24 @@ public class EstacionamentoResource {
 	}
 	
 	
+	
+	
+	
 	@PostMapping
 	public ResponseEntity<Movimentacao> salvar(@RequestBody Movimentacao movimentacao, HttpServletResponse response){
 		movimentacao.setDataEntrada(Date.dataAtual());
 		Movimentacao movimentacaoSalva = estacionamentoRepository.save(movimentacao);
+		
+		//verificando o tipo da movimentação
+		if(!movimentacao.getTipo().equals("D")) {
+			if(veiculoRaposytory.getVeiculosByMensalista(movimentacao.getPlaca()) > 0) {
+				movimentacao.setTipo("M");
+			}else {
+				movimentacao.setTipo("A");
+			}
+		}
+		
+		
 		
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
 				.path("/{cod_movimentacao}")
@@ -121,7 +152,19 @@ public class EstacionamentoResource {
 			
 			Precos precos = precosRepository.findByDataSaidaIsNull();
 			Cobrancas cobranca = new Cobrancas();
-			Double totalAPagar = cobranca.getValorPagar(tempoPermanencia, precos);
+			
+
+			Double totalAPagar;
+			
+			//verificando o tipo da movimentação
+			if(movimentacaoSalva.getTipo().equals("D")) {
+				totalAPagar = precos.getValorDiaria();
+			}else if(veiculoRaposytory.getVeiculosByMensalista(movimentacaoSalva.getPlaca()) > 0) {
+				totalAPagar= 0.00;
+			}else {
+				totalAPagar = cobranca.getValorPagar(tempoPermanencia, precos);
+			}
+			
 			
 			movimentacaoSalva.setTempoPermanencia(Integer.parseInt(tempoPermanencia.toString()));
 			movimentacaoSalva.setValorPago(totalAPagar);
