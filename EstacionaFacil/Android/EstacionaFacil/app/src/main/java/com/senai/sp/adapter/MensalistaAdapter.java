@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.senai.sp.estacionafacil.EnderecosMensalistaActivity;
 import com.senai.sp.estacionafacil.R;
 import com.senai.sp.estacionafacil.TelefoneMensalistaActivity;
 import com.senai.sp.estacionafacil.VeiculoMensalistaActivity;
@@ -63,27 +64,31 @@ public class MensalistaAdapter extends BaseAdapter {
         btnVeiculos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent abrirVeiculosMensalista = new Intent(visualizarMensalistasActivity, VeiculoMensalistaActivity.class);
-                abrirVeiculosMensalista.putExtra("codMensalista", mensalista.getCodMensalista());
+            Intent abrirVeiculosMensalista = new Intent(visualizarMensalistasActivity, VeiculoMensalistaActivity.class);
+            abrirVeiculosMensalista.putExtra("codMensalista", mensalista.getCodMensalista());
 
-                visualizarMensalistasActivity.startActivity(abrirVeiculosMensalista);
+            visualizarMensalistasActivity.startActivity(abrirVeiculosMensalista);
             }
         });
 
         btnTelefone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent abrirTelefonesMensalista = new Intent(visualizarMensalistasActivity, TelefoneMensalistaActivity.class);
-            abrirTelefonesMensalista.putExtra("codMensalista", mensalista.getCodMensalista());
+                Intent abrirTelefonesMensalista = new Intent(visualizarMensalistasActivity, TelefoneMensalistaActivity.class);
+                abrirTelefonesMensalista.putExtra("codMensalista", mensalista.getCodMensalista());
 
-            visualizarMensalistasActivity.startActivity(abrirTelefonesMensalista);
+                visualizarMensalistasActivity.startActivity(abrirTelefonesMensalista);
             }
         });
 
         btnEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent abrirEnderecosMensalista = new Intent(visualizarMensalistasActivity, EnderecosMensalistaActivity.class);
 
+                abrirEnderecosMensalista.putExtra("codMensalista", mensalista.getCodMensalista());
+
+                visualizarMensalistasActivity.startActivity(abrirEnderecosMensalista);
             }
         });
 
