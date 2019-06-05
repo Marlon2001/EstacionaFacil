@@ -27,11 +27,6 @@ public class CadastroTelefoneMensalista extends AsyncTask {
         this.mensalista = mensalista;
     }
 
-    public CadastroTelefoneMensalista(Telefone telefone, int codMensalista){
-        this.telefone = telefone;
-        this.mensalista.setCodMensalista(codMensalista);
-    }
-
     @Override
     protected Object doInBackground(Object[] objects) {
         JSONStringer jsMovimento = new JSONStringer();

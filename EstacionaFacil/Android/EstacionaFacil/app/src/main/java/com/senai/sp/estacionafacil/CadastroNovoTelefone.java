@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.senai.sp.model.Mensalista;
 import com.senai.sp.model.Telefone;
 import com.senai.sp.tasks.CadastroTelefoneMensalista;
 
@@ -35,7 +36,6 @@ public class CadastroNovoTelefone extends AppCompatActivity {
 
         Intent intent = getIntent();
         codMensalista = intent.getIntExtra("codMensalista", 0);
-        Log.d("COD MENSALISTA", codMensalista+"");
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +44,10 @@ public class CadastroNovoTelefone extends AppCompatActivity {
                 telefone.setTelefone(txtTelefone.getText().toString());
                 telefone.setTipoTelefone(txtTipotelefone.getText().toString());
 
-                CadastroTelefoneMensalista cadastroTelefoneMensalista = new CadastroTelefoneMensalista(telefone, codMensalista);
+                Mensalista mensalista = new Mensalista();
+                mensalista.setCodMensalista(codMensalista);
+
+                CadastroTelefoneMensalista cadastroTelefoneMensalista = new CadastroTelefoneMensalista(telefone, mensalista);
                 cadastroTelefoneMensalista.execute();
 
                 try {
