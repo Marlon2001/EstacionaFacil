@@ -1,6 +1,6 @@
 package br.senai.sp.api.model;
 
-import javax.persistence.Column; 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,14 +13,37 @@ public class Precos {
 // tem que indentificar como estao os camos no banco para o spring saber onde salvar os atriutos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="cod_preco")
+	@Column(name = "cod_preco")
 	private Long codPreco;
-	@Column(name="valor_hora_1")
+	@Column(name = "valor_hora_1")
 	private Double valorHora1;
-	@Column(name="valor_demais_horas")
+	@Column(name = "valor_demais_horas")
 	private Double valorDemaisHoras;
-	@Column(name="data_saida")
+	
+	@Column(name = "valor_vaga")
+	private Double valorVaga;
+	
+	@Column(name = "valor_diaria")
+	private Double valorDiaria;
+	
+	@Column(name = "data_saida")
 	private String dataSaida;
+
+	public Double getValorDiaria() {
+		return valorDiaria;
+	}
+
+	public void setValorDiaria(Double valorDiaria) {
+		this.valorDiaria = valorDiaria;
+	}
+
+	public void setValorVaga(Double valorVaga) {
+		this.valorVaga = valorVaga;
+	}
+
+	public Double getValorVaga() {
+		return valorVaga;
+	}
 
 	public Long getCodPreco() {
 		return codPreco;
@@ -60,5 +83,4 @@ public class Precos {
 				+ ", dataSaida=" + dataSaida + "]";
 	}
 
-	
 }

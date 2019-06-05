@@ -88,7 +88,7 @@ CREATE TABLE `tbl_endereco_mensalista` (
   KEY `fk_mensalista_endereco_idx` (`cod_mensalista`),
   CONSTRAINT `fk_endereco_mensalista` FOREIGN KEY (`cod_endereco`) REFERENCES `tbl_endereco` (`cod_endereco`),
   CONSTRAINT `fk_mensalista_endereco` FOREIGN KEY (`cod_mensalista`) REFERENCES `tbl_mensalista` (`cod_mensalista`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `tbl_endereco_mensalista` (
 
 LOCK TABLES `tbl_endereco_mensalista` WRITE;
 /*!40000 ALTER TABLE `tbl_endereco_mensalista` DISABLE KEYS */;
-INSERT INTO `tbl_endereco_mensalista` VALUES (1,1,1,'Minha casa'),(2,1,1,'Casa Da Veia'),(3,2,1,'Casa do irmã'),(4,1,1,'Minha casa'),(5,1,1,'Minha casa'),(6,1,1,'Minha casa');
+INSERT INTO `tbl_endereco_mensalista` VALUES (1,1,1,'Minha casa'),(2,1,1,'Casa Da Veia'),(3,2,1,'Casa do irmã'),(4,1,1,'Minha casa'),(5,1,1,'Minha casa'),(6,1,1,'Minha casa'),(7,1,1,NULL);
 /*!40000 ALTER TABLE `tbl_endereco_mensalista` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,7 +193,7 @@ CREATE TABLE `tbl_movimentacao` (
   `valor_pago` decimal(8,2) DEFAULT NULL,
   `tipo` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`cod_movimentacao`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -202,7 +202,7 @@ CREATE TABLE `tbl_movimentacao` (
 
 LOCK TABLES `tbl_movimentacao` WRITE;
 /*!40000 ALTER TABLE `tbl_movimentacao` DISABLE KEYS */;
-INSERT INTO `tbl_movimentacao` VALUES (1,'NSD-3513','Gol','2019-05-05 12:30:45','2019-05-08 15:21:44',5210,611.00,''),(2,'MKD-9304','Fiesta','2019-05-06 14:54:34','2019-05-08 15:19:11',2904,345.00,''),(3,'LSM-0128','HB20','2019-05-06 16:43:56','2019-05-06 21:20:30',276,37.00,''),(4,'MKD-9304','Fiesta','2019-05-06 14:54:34','2019-05-08 15:19:11',2904,345.00,''),(5,'NSD-3513','Gol','2019-05-05 12:30:45','2019-05-08 15:21:44',5210,611.00,''),(6,'HSD-3423','Gol','2019-05-08 15:23:41','2019-05-08 15:23:45',0,0.00,''),(7,'HSD-3423','Gol','2019-05-08 15:23:41','2019-05-08 15:23:45',0,0.00,''),(8,'HSD-3423','Gol','2019-05-09 13:00:00','2019-05-09 15:09:54',129,41.98,''),(9,'ABD-123','Gol','2019-05-22 15:56:43',NULL,NULL,NULL,NULL),(10,'EFG-123','Gol','2019-05-22 15:57:09',NULL,NULL,NULL,NULL),(11,'HIJ-123','Gol','2019-05-22 15:57:16',NULL,NULL,NULL,NULL),(12,'OIJ-123','FORD','2019-05-22 15:57:28',NULL,NULL,NULL,NULL),(13,'SDS-123','FORD','2019-05-22 15:57:35',NULL,NULL,NULL,NULL),(14,'AAA-222','FORD','2019-05-22 15:57:46','2019-05-22 15:59:24',1,0.00,'A'),(15,'AAA-222','FORD','2019-05-22 16:11:09','2019-05-22 16:11:58',0,0.00,'A'),(16,'ASD-5854','FordK','2019-05-22 16:31:16',NULL,NULL,NULL,'M');
+INSERT INTO `tbl_movimentacao` VALUES (16,'ASD-5854','FordK','2019-05-22 16:31:16','2019-06-05 16:47:19',20176,0.00,'M'),(18,'ASD-5855','FordK','2019-05-23 13:37:11','2019-06-05 16:47:23',18910,0.00,'A'),(19,'ASD-5655','FordK','2019-05-23 13:37:25','2019-06-05 16:48:50',18911,5046.85,'A'),(20,'SDF-5655','FordK','2019-05-23 13:37:46',NULL,NULL,NULL,'M'),(21,'SDF-5650','FordK','2019-05-23 13:39:02',NULL,NULL,NULL,'A'),(23,'ABD-123','Gol','2019-06-05 16:34:54',NULL,NULL,NULL,'A'),(25,'ABD-123','Gol','2019-06-05 16:35:05',NULL,NULL,NULL,'D'),(26,'SDF-5655','Gol','2019-06-05 16:35:53',NULL,NULL,NULL,'D');
 /*!40000 ALTER TABLE `tbl_movimentacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -217,6 +217,8 @@ CREATE TABLE `tbl_preco` (
   `cod_preco` int(11) NOT NULL AUTO_INCREMENT,
   `valor_hora_1` decimal(8,2) NOT NULL,
   `valor_demais_horas` decimal(8,2) NOT NULL,
+  `valor_diaria` decimal(8,2) NOT NULL,
+  `valor_vaga` decimal(8,2) NOT NULL,
   `data_saida` datetime DEFAULT NULL,
   PRIMARY KEY (`cod_preco`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
@@ -228,7 +230,7 @@ CREATE TABLE `tbl_preco` (
 
 LOCK TABLES `tbl_preco` WRITE;
 /*!40000 ALTER TABLE `tbl_preco` DISABLE KEYS */;
-INSERT INTO `tbl_preco` VALUES (1,7.00,5.00,'2019-05-03 00:00:00'),(2,9.00,7.00,'2019-05-06 00:00:00'),(3,7.00,5.99,'2019-05-09 13:29:20'),(4,7.00,5.99,'2019-05-09 13:34:04'),(5,10.00,15.99,NULL);
+INSERT INTO `tbl_preco` VALUES (1,7.00,5.00,0.00,0.00,'2019-05-03 00:00:00'),(2,9.00,7.00,0.00,0.00,'2019-05-06 00:00:00'),(3,7.00,5.99,0.00,0.00,'2019-05-09 13:29:20'),(4,7.00,5.99,0.00,0.00,'2019-05-09 13:34:04'),(5,10.00,15.99,2.00,100.00,NULL);
 /*!40000 ALTER TABLE `tbl_preco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,7 +254,7 @@ CREATE TABLE `tbl_telefone` (
 
 LOCK TABLES `tbl_telefone` WRITE;
 /*!40000 ALTER TABLE `tbl_telefone` DISABLE KEYS */;
-INSERT INTO `tbl_telefone` VALUES (1,'11 97800-4846'),(2,'11 98589-8255');
+INSERT INTO `tbl_telefone` VALUES (1,'11 97800-4846');
 /*!40000 ALTER TABLE `tbl_telefone` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,7 +284,6 @@ CREATE TABLE `tbl_telefone_mensalista` (
 
 LOCK TABLES `tbl_telefone_mensalista` WRITE;
 /*!40000 ALTER TABLE `tbl_telefone_mensalista` DISABLE KEYS */;
-INSERT INTO `tbl_telefone_mensalista` VALUES (1,1,1,'Fixo'),(2,2,1,'Celular'),(3,1,2,'Recado'),(4,1,1,'Fixo'),(5,1,1,'Fixo'),(6,1,1,'Fixo'),(7,1,1,'Fixo'),(8,1,1,'Fixo');
 /*!40000 ALTER TABLE `tbl_telefone_mensalista` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,7 +315,7 @@ CREATE TABLE `tbl_veiculo` (
 
 LOCK TABLES `tbl_veiculo` WRITE;
 /*!40000 ALTER TABLE `tbl_veiculo` DISABLE KEYS */;
-INSERT INTO `tbl_veiculo` VALUES (8,2018,'FordK','ASD-5854',1,1),(9,2011,'Gol','SDF-5654',2,2),(10,2018,'FordK2','ASD-5854',1,1),(11,2018,'FordK2','ASD-5854',1,1);
+INSERT INTO `tbl_veiculo` VALUES (9,2011,'Gol','SDF-5655',2,2),(10,2018,'FordK2','ASD-5856',1,1),(11,2018,'FordK2','ASD-5857',1,1);
 /*!40000 ALTER TABLE `tbl_veiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -327,4 +328,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-22 16:37:47
+-- Dump completed on 2019-06-05 16:56:10
