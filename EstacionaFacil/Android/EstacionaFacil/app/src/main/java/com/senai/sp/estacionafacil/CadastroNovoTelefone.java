@@ -40,34 +40,42 @@ public class CadastroNovoTelefone extends AppCompatActivity {
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Telefone telefone = new Telefone();
-                telefone.setTelefone(txtTelefone.getText().toString());
-                telefone.setTipoTelefone(txtTipotelefone.getText().toString());
+            Telefone telefone = new Telefone();
+            telefone.setTelefone(txtTelefone.getText().toString());
+            telefone.setTipoTelefone(txtTipotelefone.getText().toString());
 
+<<<<<<< HEAD
                 Mensalista mensalista = new Mensalista();
                 mensalista.setCodMensalista(codMensalista);
 
                 CadastroTelefoneMensalista cadastroTelefoneMensalista = new CadastroTelefoneMensalista(telefone, mensalista);
                 cadastroTelefoneMensalista.execute();
+=======
+            Mensalista mensalista = new Mensalista();
+            mensalista.setCodMensalista(codMensalista);
+>>>>>>> 1cf674de1a22aa9a935fbadc0a32091f012e44e3
 
-                try {
-                    cadastroTelefoneMensalista.get();
+            CadastroTelefoneMensalista cadastroTelefoneMensalista = new CadastroTelefoneMensalista(telefone, mensalista);
+            cadastroTelefoneMensalista.execute();
 
-                    new AlertDialog.Builder(CadastroNovoTelefone.this)
-                        .setTitle("Concluído!")
-                        .setMessage("Cadastro realizado com sucesso.")
-                        .setNeutralButton("Fechar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                finish();
-                            }
-                        })
-                        .show();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            try {
+                cadastroTelefoneMensalista.get();
+
+                new AlertDialog.Builder(CadastroNovoTelefone.this)
+                    .setTitle("Concluído!")
+                    .setMessage("Cadastro realizado com sucesso.")
+                    .setNeutralButton("Fechar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    .show();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             }
         });
 

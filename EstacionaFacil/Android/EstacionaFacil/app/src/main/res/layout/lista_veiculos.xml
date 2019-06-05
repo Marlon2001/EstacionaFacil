@@ -10,35 +10,39 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/layout_veiculo_editar"
             android:layout_width="wrap_content"
             android:layout_height="56dp"
             android:paddingVertical="10dp" >
 
             <TextView
-                android:id="@+id/txt_tipo_telefone"
-                android:layout_width="100dp"
+                android:id="@+id/txt_placa_veiculo3"
+                android:layout_width="135dp"
                 android:layout_height="wrap_content"
-                android:text="Recado"
+                android:text="NDK-5346"
                 android:textSize="24dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:lines="1"
+                android:ellipsize="end" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=":  "
                 android:textSize="24dp"
+                android:layout_marginLeft="8dp"
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/txt_telefone"
-                android:layout_width="180dp"
+                android:id="@+id/txt_modelo_veiculo3"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:text="(11) 4567-4366"
+                android:text="Crossfox"
                 android:textSize="22dp"/>
         </LinearLayout>
     </LinearLayout>
     <Button
-        android:id="@+id/btn_deletar_telefone"
+        android:id="@+id/btn_deletar_veiculo"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:background="@mipmap/ic_delete"

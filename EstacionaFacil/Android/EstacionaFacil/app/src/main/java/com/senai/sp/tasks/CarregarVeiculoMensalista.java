@@ -3,11 +3,10 @@ package com.senai.sp.tasks;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
-import com.senai.sp.adapter.TelefoneAdapter;
+import com.senai.sp.adapter.VeiculoAdapter;
 import com.senai.sp.estacionafacil.MainActivity;
-import com.senai.sp.estacionafacil.TelefoneMensalistaActivity;
-import com.senai.sp.model.Mensalista;
-import com.senai.sp.model.Telefone;
+import com.senai.sp.estacionafacil.VeiculoMensalistaActivity;
+import com.senai.sp.model.Veiculo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,23 +22,23 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarregarTelefoneMensalista extends AsyncTask {
+public class CarregarVeiculoMensalista extends AsyncTask {
 
-    private TelefoneMensalistaActivity telefoneMensalistaActivity;
+    private VeiculoMensalistaActivity veiculoMensalistaActivity;
     private ProgressDialog progressDialog;
-    private List<Telefone> listTelefones;
+    private List<Veiculo> listVeiculo;
     private int codMensalista;
 
-    public CarregarTelefoneMensalista(TelefoneMensalistaActivity telefoneMensalistaActivity, int codMensalista) {
-        this.telefoneMensalistaActivity = telefoneMensalistaActivity;
+    public CarregarVeiculoMensalista(VeiculoMensalistaActivity veiculoMensalistaActivity, int codMensalista) {
+        this.veiculoMensalistaActivity = veiculoMensalistaActivity;
         this.codMensalista = codMensalista;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        progressDialog = new ProgressDialog(telefoneMensalistaActivity);
-        progressDialog.setTitle("Carregando lista de telefones...");
+        progressDialog = new ProgressDialog(veiculoMensalistaActivity);
+        progressDialog.setTitle("Carregando lista de veiculos...");
         progressDialog.setMessage("Aguarde alguns instantes.");
         progressDialog.show();
     }
@@ -47,7 +46,7 @@ public class CarregarTelefoneMensalista extends AsyncTask {
     @Override
     protected Object doInBackground(Object[] objects) {
         try {
-            URL url = new URL("http://"+ MainActivity.ipServidor+":8080/telefoneMensalista/"+codMensalista);
+            URL url = new URL("http://"+ MainActivity.ipServidor+":8080/veiculo/"+codMensalista);
 
             HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
             InputStream inputStream = conexao.getInputStream();
@@ -63,16 +62,18 @@ public class CarregarTelefoneMensalista extends AsyncTask {
             }
 
             JSONArray jsonArray = new JSONArray(dados);
-            listTelefones = new ArrayList<>();
-            Telefone telefone;
+            listVeiculo = new ArrayList<>();
+            Veiculo veiculo;
 
             for(int i = 0; i < jsonArray.length(); i++){
                 JSONObject jo = (JSONObject) jsonArray.get(i);
-                telefone = new Telefone();
-                telefone.setCodTelefone(jo.getJSONObject("codTelefone").getInt("codTelefone"));
-                telefone.setTelefone(jo.getJSONObject("codTelefone").getString("telefone"));
-                telefone.setTipoTelefone(jo.getString("tipoTelefone"));
-                listTelefones.add(telefone);
+                veiculo = new Veiculo();
+                veiculo.setCodVeiculo(jo.getInt("codVeiculo"));
+                veiculo.setPlaca(jo.getString("placa"));
+                veiculo.setModelo(jo.getString("modelo"));
+                veiculo.setAnoVeiculo(jo.getString("anoVeiculo"));
+                veiculo.setCodFabricante(jo.getJSONObject("fabricante").getInt("codFabricante"));
+                listVeiculo.add(veiculo);
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -81,14 +82,14 @@ public class CarregarTelefoneMensalista extends AsyncTask {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return null;
+        return listVeiculo;
     }
 
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
         progressDialog.dismiss();
-        TelefoneAdapter telefoneAdapter = new TelefoneAdapter(telefoneMensalistaActivity, listTelefones, codMensalista);
-        TelefoneMensalistaActivity.listTelefone.setAdapter(telefoneAdapter);
+        VeiculoAdapter veiculoAdapter = new VeiculoAdapter(veiculoMensalistaActivity, listVeiculo, codMensalista);
+        VeiculoMensalistaActivity.listVeiculos.setAdapter(veiculoAdapter);
     }
 }

@@ -1,6 +1,8 @@
 package com.senai.sp.model;
 
-public class Veiculo {
+import java.io.Serializable;
+
+public class Veiculo implements Serializable{
 
     private int codVeiculo;
     private String anoVeiculo;

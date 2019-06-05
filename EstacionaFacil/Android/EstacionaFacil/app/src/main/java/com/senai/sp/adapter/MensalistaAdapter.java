@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.senai.sp.estacionafacil.R;
 import com.senai.sp.estacionafacil.TelefoneMensalistaActivity;
+import com.senai.sp.estacionafacil.VeiculoMensalistaActivity;
 import com.senai.sp.estacionafacil.VisualizarMensalistasActivity;
 import com.senai.sp.model.Mensalista;
 
@@ -50,6 +51,7 @@ public class MensalistaAdapter extends BaseAdapter {
         TextView txtNome = view.findViewById(R.id.txt_nome_mensalista);
         TextView txtCpf = view.findViewById(R.id.txt_cpf_mensalista);
         TextView txtEmail = view.findViewById(R.id.txt_email_mensalista);
+
         Button btnVeiculos = view.findViewById(R.id.btn_veiculos_mensalista);
         Button btnTelefone = view.findViewById(R.id.btn_telefone_mensalista);
         Button btnEndereco = view.findViewById(R.id.btn_endereco_mensalista);
@@ -61,17 +63,20 @@ public class MensalistaAdapter extends BaseAdapter {
         btnVeiculos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent abrirVeiculosMensalista = new Intent(visualizarMensalistasActivity, VeiculoMensalistaActivity.class);
+                abrirVeiculosMensalista.putExtra("codMensalista", mensalista.getCodMensalista());
 
+                visualizarMensalistasActivity.startActivity(abrirVeiculosMensalista);
             }
         });
 
         btnTelefone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent abrirTelefoneMensalista = new Intent(visualizarMensalistasActivity, TelefoneMensalistaActivity.class);
-            abrirTelefoneMensalista.putExtra("codMensalista", mensalista.getCodMensalista());
+            Intent abrirTelefonesMensalista = new Intent(visualizarMensalistasActivity, TelefoneMensalistaActivity.class);
+            abrirTelefonesMensalista.putExtra("codMensalista", mensalista.getCodMensalista());
 
-            visualizarMensalistasActivity.startActivity(abrirTelefoneMensalista);
+            visualizarMensalistasActivity.startActivity(abrirTelefonesMensalista);
             }
         });
 
