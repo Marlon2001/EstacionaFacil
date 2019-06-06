@@ -1,13 +1,16 @@
 package br.senai.sp.api.resource;
 
-import java.util.List; 
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.senai.sp.api.model.Cidade;
@@ -23,26 +26,29 @@ import br.senai.sp.api.repository.MensalistaRepository;
 @RestController
 @RequestMapping("/enderecoMensalista")
 public class EnderecoMensalistaResource {
-	
+
 	@Autowired
-	private EnderecoMensalistaRepository enderecoMensalistaRepository; 
-	@Autowired 
+	private EnderecoMensalistaRepository enderecoMensalistaRepository;
+
+	@Autowired
 	private EstadoRepository estadoRepository;
+
 	@Autowired
 	private CidadeRepository cidadeRepository;
-	@Autowired 
+
+	@Autowired
 	private MensalistaRepository mensalistaRepository;
+
 	@Autowired
 	private EnderecoRepository enderecoRepository;
-	
 
 	@GetMapping
-	public List<EnderecoMensalista> getEnderecoMensalista(){
+	public List<EnderecoMensalista> getEnderecoMensalista() {
 		return enderecoMensalistaRepository.findAll();
 	}
-	
+
 	@GetMapping("/{codMensalista}")
-	public List<EnderecoMensalista> getEnderecoMensalista(@PathVariable Long codMensalista){
+	public List<EnderecoMensalista> getEnderecoMensalista(@PathVariable Long codMensalista) {
 		Mensalista m = new Mensalista();
 		m.setCodMensalista(codMensalista);
 		return enderecoMensalistaRepository.findByCodMensalista(m);
@@ -53,24 +59,29 @@ public class EnderecoMensalistaResource {
 		EnderecoMensalista enderecoMensalistaSalvo;
 		Endereco enderecoSalvo = enderecoMensalista.getCodEndereco();
 		enderecoSalvo = enderecoRepository.save(enderecoSalvo);
-		
+
 		Cidade cidade = enderecoMensalista.getCodEndereco().getCodCidade();
 		cidade = cidadeRepository.findByCod(cidade.getCodCidade());
 		Long codEstado = cidade.getCodEstado().getCodEstado();
-		
-		enderecoSalvo.getCodCidade().setCodEstado(
-				estadoRepository.findByCod(codEstado)
-		);
-		
-		enderecoSalvo.setCodCidade(cidade);;
+
+		enderecoSalvo.getCodCidade().setCodEstado(estadoRepository.findByCod(codEstado));
+
+		enderecoSalvo.setCodCidade(cidade);
+		;
 		enderecoMensalistaSalvo = enderecoMensalistaRepository.save(enderecoMensalista);
 		enderecoMensalistaSalvo.setCodMensalista(
 				mensalistaRepository.findByCod(enderecoMensalistaSalvo.getCodMensalista().getCodMensalista()));
-		
+
 		enderecoMensalistaSalvo.setCodEndereco(
-				enderecoRepository.findByCod(enderecoMensalistaSalvo.getCodEndereco().getCodEndereco())
-		);
-		
+				enderecoRepository.findByCod(enderecoMensalistaSalvo.getCodEndereco().getCodEndereco()));
+
 		return enderecoMensalistaSalvo;
+	}
+	
+	@DeleteMapping("/{codEndereco}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deletar(@PathVariable Long codEndereco) {
+		enderecoMensalistaRepository.deleteByCodEndereco(codEndereco);
+		enderecoRepository.deleteByCodEndereco(codEndereco);
 	}
 }

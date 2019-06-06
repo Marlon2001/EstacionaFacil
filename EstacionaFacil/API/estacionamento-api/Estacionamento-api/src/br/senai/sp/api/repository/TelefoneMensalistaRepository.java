@@ -1,6 +1,6 @@
 package br.senai.sp.api.repository;
 
-import java.util.List; 
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -15,7 +15,7 @@ public interface TelefoneMensalistaRepository extends JpaRepository<TelefoneMens
 
 	@Query("SELECT tm From TelefoneMensalista tm WHERE tm.codMensalista = ?1")
 	List<TelefoneMensalista> findByCodMensalista(Mensalista m);
-	
+
 	@Transactional
 	@Modifying
 	@Query("DELETE FROM TelefoneMensalista WHERE codTelefone.codTelefone = ?1")

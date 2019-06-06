@@ -10,22 +10,24 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tbl_preco")
 public class Precos {
-// tem que indentificar como estao os camos no banco para o spring saber onde salvar os atriutos
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cod_preco")
 	private Long codPreco;
+	
 	@Column(name = "valor_hora_1")
 	private Double valorHora1;
+	
 	@Column(name = "valor_demais_horas")
 	private Double valorDemaisHoras;
-	
+
 	@Column(name = "valor_vaga")
 	private Double valorVaga;
-	
+
 	@Column(name = "valor_diaria")
 	private Double valorDiaria;
-	
+
 	@Column(name = "data_saida")
 	private String dataSaida;
 

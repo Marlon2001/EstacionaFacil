@@ -14,16 +14,17 @@ import br.senai.sp.api.repository.FabricanteRepository;
 @RestController
 @RequestMapping("/fabricante")
 public class FabricanteResorce {
+	
 	@Autowired
 	private FabricanteRepository fabricanteRepository;
-	
+
 	@GetMapping
-	public List<Fabricante> getFabricantes (){
+	public List<Fabricante> getFabricantes() {
 		return fabricanteRepository.findAll();
 	}
-	
-	@PostMapping 
-	public List<Fabricante> setFabricante(){
+
+	@PostMapping
+	public List<Fabricante> setFabricante() {
 		// cadastro de fabricante
 		return null;
 	}

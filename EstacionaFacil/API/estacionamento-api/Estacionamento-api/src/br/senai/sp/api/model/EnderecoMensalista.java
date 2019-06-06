@@ -1,6 +1,6 @@
 package br.senai.sp.api.model;
 
-import javax.persistence.CascadeType;
+import javax.persistence.CascadeType; 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,20 +15,19 @@ import javax.persistence.Table;
 @Table(name = "tbl_endereco_mensalista")
 public class EnderecoMensalista {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="cod_endereco_mensalista")
+	@Column(name = "cod_endereco_mensalista")
 	private Long codEnderecoMensalista;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cod_mensalista")
 	private Mensalista codMensalista;
-	
-	@OneToOne
+
+	@OneToOne()
 	@JoinColumn(name = "cod_endereco")
 	private Endereco codEndereco;
-	
+
 	@Column(name = "descricao")
 	private String descricao;
 

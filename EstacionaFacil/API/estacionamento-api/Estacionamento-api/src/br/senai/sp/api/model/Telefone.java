@@ -15,6 +15,7 @@ public class Telefone {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cod_telefone")
 	private Long codTelefone;
+	
 	@Column(name = "telefone")
 	private String telefone;
 

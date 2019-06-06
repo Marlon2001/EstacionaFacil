@@ -15,7 +15,5 @@ public interface VeiculoRapository extends JpaRepository<Veiculo, Long> {
 
 	@Query("SELECT count(v) From Veiculo v WHERE v.placa = ?1")
 	int getVeiculosByMensalista(String placa);
-	
-	
 
 }
