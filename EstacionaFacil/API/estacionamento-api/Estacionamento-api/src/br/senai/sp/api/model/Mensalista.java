@@ -15,10 +15,13 @@ public class Mensalista {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cod_mensalista")
 	private Long codMensalista;
+	
 	@Column(name = "nome")
 	private String nome;
+	
 	@Column(name = "email")
 	private String email;
+	
 	@Column(name = "cpf")
 	private String cpf;
 
@@ -59,7 +62,5 @@ public class Mensalista {
 		return "Mensalista [codMensalista=" + codMensalista + ", nome=" + nome + ", email=" + email + ", cpf=" + cpf
 				+ "]";
 	}
-
-	
 
 }

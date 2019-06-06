@@ -13,20 +13,27 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "tbl_movimentacao")
 public class Movimentacao {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codMovimentacao;
+	
 	@NotNull
 	@Column(name = "placa")
 	private String placa;
+	
 	@Column(name = "modelo")
 	private String modelo;
+	
 	@Column(name = "data_entrada")
 	private String dataEntrada;
+	
 	@Column(name = "data_saida")
 	private String dataSaida;
+	
 	@Column(name = "tempo_permanencia")
 	private Integer tempoPermanencia;
+	
 	@Column(name = "valor_pago")
 	private Double valorPago;
 	private String tipo;

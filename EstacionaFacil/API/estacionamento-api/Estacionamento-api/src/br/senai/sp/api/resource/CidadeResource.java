@@ -14,15 +14,13 @@ import br.senai.sp.api.repository.CidadeRepository;
 @RestController
 @RequestMapping("/cidades")
 public class CidadeResource {
-	
+
 	@Autowired
 	private CidadeRepository cidadeRepository;
-	
+
 	@GetMapping("/{cod}")
 	public List<Cidade> getCidadePorCodEstado(@PathVariable Long cod) {
 		return cidadeRepository.getCidadeByCodEstado(cod);
 	}
 
-	
-	
 }

@@ -1,6 +1,6 @@
 package br.senai.sp.api.model;
 
-import javax.persistence.Column; 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,29 +12,30 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tbl_telefone_mensalista")
 public class TelefoneMensalista {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="cod_telefone_mensalista")
+	@Column(name = "cod_telefone_mensalista")
 	private Long codTelefoneMensalista;
+
 	@ManyToOne
 	@JoinColumn(name = "cod_mensalista")
 	private Mensalista codMensalista;
+
 	@ManyToOne
 	@JoinColumn(name = "cod_telefone")
 	private Telefone codTelefone;
+
 	@Column(name = "tipo_telefone")
 	private String tipoTelefone;
-	
-	
-	
+
 	public void setCodTelefoneMensalista(Long codTelefoneMensalista) {
 		this.codTelefoneMensalista = codTelefoneMensalista;
 	}
+
 	public Long getCodTelefoneMensalista() {
 		return codTelefoneMensalista;
 	}
-	
 
 	public Mensalista getCodMensalista() {
 		return codMensalista;

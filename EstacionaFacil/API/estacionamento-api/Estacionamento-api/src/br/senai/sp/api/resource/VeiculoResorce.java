@@ -33,10 +33,13 @@ public class VeiculoResorce {
 
 	@Autowired
 	private VeiculoRapository veiculoRapository;
+	
 	@Autowired
 	private FabricanteRepository fabricanteRepository;
+	
 	@Autowired
 	private MensalistaRepository mensalistaRepository;
+	
 
 	@GetMapping
 	public List<Veiculo> getVeiculos() {
@@ -54,24 +57,21 @@ public class VeiculoResorce {
 	public void deleteVeiculo(@PathVariable Long codVeiculo) {
 		veiculoRapository.deleteById(codVeiculo);
 	}
-	
+
 	@PutMapping("/{codVeiculo}")
-	public ResponseEntity<Veiculo> atualizarVeiculo(@PathVariable Long codVeiculo, @RequestBody Veiculo veiculo, HttpServletResponse response) {
-		
+	public ResponseEntity<Veiculo> atualizarVeiculo(@PathVariable Long codVeiculo, @RequestBody Veiculo veiculo,
+			HttpServletResponse response) {
+
 		Veiculo veiculoSalvo = veiculoRapository.findById(codVeiculo).get();
-		
+
 		BeanUtils.copyProperties(veiculo, veiculoSalvo, "codVeiculo");
 		veiculoRapository.save(veiculo);
-		
-		URI uri = ServletUriComponentsBuilder
-				.fromCurrentRequestUri()
-				.path("/{codVeiculo}")
-				.buildAndExpand(veiculoSalvo.getCodMensalista())
-				.toUri();
-		response.addHeader("Location", uri.toASCIIString());
-		
-		return ResponseEntity.created(uri).body(veiculoSalvo);
 
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{codVeiculo}")
+				.buildAndExpand(veiculoSalvo.getCodMensalista()).toUri();
+		response.addHeader("Location", uri.toASCIIString());
+
+		return ResponseEntity.created(uri).body(veiculoSalvo);
 	}
 
 	@PostMapping

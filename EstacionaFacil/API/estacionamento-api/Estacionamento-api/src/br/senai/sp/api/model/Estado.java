@@ -8,11 +8,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tbl_estado")
 public class Estado {
+	
 	@Id
 	@Column(name = "cod_estado")
 	private Long codEstado;
+	
 	@Column(name = "nome_estado")
 	private String nomeEstado;
+	
 	@Column(name = "sigla")
 	private String sigla;
 

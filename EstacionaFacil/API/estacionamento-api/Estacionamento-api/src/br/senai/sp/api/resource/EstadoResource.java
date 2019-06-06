@@ -13,12 +13,12 @@ import br.senai.sp.api.repository.EstadoRepository;
 @RestController
 @RequestMapping("/estado")
 public class EstadoResource {
-	
+
 	@Autowired
 	private EstadoRepository estadoRepository;
-	
+
 	@GetMapping
-	public List<Estado> getEstados(){
+	public List<Estado> getEstados() {
 		return estadoRepository.findAll();
 	}
 }

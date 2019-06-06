@@ -17,8 +17,10 @@ public class Cidade {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cod_cidade")
 	private Long codCidade;
+	
 	@Column(name = "nome_cidade")
 	private String nomeCidade;
+	
 	@ManyToOne
 	@JoinColumn(name = "cod_estado")
 	private Estado codEstado;

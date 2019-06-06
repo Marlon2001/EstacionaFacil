@@ -18,18 +18,18 @@ import br.senai.sp.api.repository.TelefoneRepository;
 @RestController
 @RequestMapping("/telefone")
 public class TelefoneResource {
-	
+
 	@Autowired
 	private TelefoneRepository telefoneRepository;
-	
+
 	@Autowired
 	private TelefoneMensalistaRepository telefoneMensalistaRepository;
-		
+
 	@GetMapping
-	public List<Telefone> getTelefones(){
+	public List<Telefone> getTelefones() {
 		return telefoneRepository.findAll();
 	}
-		
+
 	@DeleteMapping("/{codTelefone}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteTelefone(@PathVariable Long codTelefone) {
