@@ -20,6 +20,7 @@ public class CadastrarEntrada extends AsyncTask {
     private String txtPlaca;
     private String txtModelo;
     private String tipo;
+
     public CadastrarEntrada(String txtPlaca, String txtModelo, String tipo) {
         this.txtPlaca = txtPlaca;
         this.txtModelo = txtModelo;

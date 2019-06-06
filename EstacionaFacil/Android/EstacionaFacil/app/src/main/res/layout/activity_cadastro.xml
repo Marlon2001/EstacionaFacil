@@ -53,26 +53,45 @@
                 android:inputType="text"
                 android:layout_marginTop="8dp"
                 android:textSize="22sp"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
+        </android.support.design.widget.TextInputLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="4dp"
+                android:checkedButton="1">
+
                 <CheckBox
                     android:id="@+id/cb_diariasta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Diarista"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="30dp"/>
+                    android:onClick="onCheckboxClicked"/>
+
                 <CheckBox
+                    android:id="@+id/cb_avulso"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Avulso"
-                    />
-            </LinearLayout>
+                    android:layout_marginLeft="8dp"
+                    android:onClick="onCheckboxClicked"/>
 
-        </android.support.design.widget.TextInputLayout>
+                <CheckBox
+                    android:id="@+id/cb_mensalista"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mensalista"
+                    android:layout_marginLeft="8dp"
+                    android:onClick="onCheckboxClicked"/>
+            </RadioGroup>
+        </LinearLayout>
     </LinearLayout>
 
     <Button

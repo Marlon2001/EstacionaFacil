@@ -1,6 +1,6 @@
 package br.senai.sp.api.resource;
 
-import java.net.URI;
+import java.net.URI; 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -148,20 +148,23 @@ public class EstacionamentoResource {
 
 	@PostMapping
 	public ResponseEntity<Movimentacao> salvar(@RequestBody Movimentacao movimentacao, HttpServletResponse response) {
+		
 		movimentacao.setDataEntrada(Date.dataAtual());
+		
+		int veiculo = veiculoRaposytory.getVeiculosByMensalista(movimentacao.getPlaca());
+		if (veiculo != 0)
+			movimentacao.setTipo("M");
+		else if(movimentacao.getTipo().equals("D"))
+			movimentacao.setTipo("D");
+		else
+			movimentacao.setTipo("A");
+		
 		Movimentacao movimentacaoSalva = estacionamentoRepository.save(movimentacao);
-
-		// verificando o tipo da movimentação
-		if (!movimentacao.getTipo().equals("D")) {
-			if (veiculoRaposytory.getVeiculosByMensalista(movimentacao.getPlaca()) > 0) {
-				movimentacao.setTipo("M");
-			} else {
-				movimentacao.setTipo("A");
-			}
-		}
-
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{cod_movimentacao}")
-				.buildAndExpand(movimentacaoSalva.getCodMovimentacao()).toUri();
+		URI uri = ServletUriComponentsBuilder
+				.fromCurrentRequestUri()
+				.path("/{cod_movimentacao}")
+				.buildAndExpand(movimentacaoSalva.getCodMovimentacao())
+				.toUri();
 		response.addHeader("Location", uri.toASCIIString());
 
 		return ResponseEntity.ok(movimentacaoSalva);

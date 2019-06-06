@@ -10,10 +10,9 @@ import br.senai.sp.api.model.Veiculo;
 
 public interface VeiculoRapository extends JpaRepository<Veiculo, Long> {
 
-	@Query("SELECT v From Veiculo v WHERE v.codMensalista = ?1")
+	@Query("SELECT v FROM Veiculo v WHERE v.codMensalista = ?1")
 	List<Veiculo> getVeiculosByCodMensalista(Mensalista m);
 
-	@Query("SELECT count(v) From Veiculo v WHERE v.placa = ?1")
+	@Query("SELECT count(v) FROM Veiculo v WHERE v.placa = ?1")
 	int getVeiculosByMensalista(String placa);
-
 }
