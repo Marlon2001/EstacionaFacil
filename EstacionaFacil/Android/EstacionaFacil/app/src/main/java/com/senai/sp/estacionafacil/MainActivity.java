@@ -54,10 +54,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent cadastrarMovimentacao = new Intent(MainActivity.this, CadastroMovimentacaoActivity.class);
                 startActivity(cadastrarMovimentacao);
                 break;
-            case R.id.menu_saida:
-//                ConsultarSaida consultarSaida = new ConsultarSaida(MainActivity.this, movimentacao);
-//                consultarSaida.execute();
-                break;
             case R.id.visualizar_mensalistas:
                 Intent abrirVisualizarMensalistas = new Intent(this, VisualizarMensalistasActivity.class);
                 startActivity(abrirVisualizarMensalistas);

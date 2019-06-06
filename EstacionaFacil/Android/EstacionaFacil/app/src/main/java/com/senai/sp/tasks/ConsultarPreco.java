@@ -26,10 +26,14 @@ public class ConsultarPreco extends AsyncTask{
     private Preco preco;
     private TextView txtPrimeiraHora;
     private TextView txtDemaisHoras;
+    private TextView txtVaga;
+    private TextView txtDiaria;
 
-    public ConsultarPreco(TextView txtPrimeiraHora, TextView txtDemaisHoras){
+    public ConsultarPreco(TextView txtPrimeiraHora, TextView txtDemaisHoras, TextView txtDiaria, TextView txtVaga){
         this.txtPrimeiraHora = txtPrimeiraHora;
         this.txtDemaisHoras = txtDemaisHoras;
+        this.txtDiaria = txtDiaria;
+        this.txtVaga = txtVaga;
     }
 
     @Override
@@ -60,6 +64,8 @@ public class ConsultarPreco extends AsyncTask{
             preco.setValorHora1(jsonObject.getDouble("valorHora1"));
             preco.setValorDemaisHoras(jsonObject.getDouble("valorDemaisHoras"));
             preco.setDataFim(jsonObject.getString("dataSaida"));
+            preco.setValorVaga(jsonObject.getDouble("valorVaga"));
+            preco.setValorDiaria(jsonObject.getDouble("valorDiaria"));
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -76,5 +82,7 @@ public class ConsultarPreco extends AsyncTask{
         super.onPostExecute(o);
         txtPrimeiraHora.setText( preco.getValorHora1().toString());
         txtDemaisHoras.setText( preco.getValorDemaisHoras().toString());
+        txtVaga.setText(preco.getValorVaga().toString());
+        txtDiaria.setText(preco.getValorDiaria().toString());
     }
 }

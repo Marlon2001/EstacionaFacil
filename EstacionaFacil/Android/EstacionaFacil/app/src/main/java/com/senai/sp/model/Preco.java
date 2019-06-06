@@ -4,7 +4,25 @@ public class Preco {
     private Long id;
     private Double valorHora1;
     private Double valorDemaisHoras;
+    private Double valorVaga;
+    private Double valorDiaria;
     private String dataFim;
+
+    public Double getValorDiaria() {
+        return valorDiaria;
+    }
+
+    public Double getValorVaga() {
+        return valorVaga;
+    }
+
+    public void setValorDiaria(Double valorDiaria) {
+        this.valorDiaria = valorDiaria;
+    }
+
+    public void setValorVaga(Double valorVaga) {
+        this.valorVaga = valorVaga;
+    }
 
     public Long getId() {
         return id;

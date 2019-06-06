@@ -95,7 +95,7 @@ public class CadastroEnderecoMensalistaActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Estado estado = (Estado) parent.getItemAtPosition(position);
-                ConsultarCidades consultarCidades = new ConsultarCidades(CadastroEnderecoMensalistaActivity.this, estado.getCodEstado());
+                ConsultarCidades consultarCidades = new ConsultarCidades(CadastroEnderecoMensalistaActivity.this, estado.getCodEstado(), "1001");
                 consultarCidades.execute();
             }
 
@@ -109,7 +109,7 @@ public class CadastroEnderecoMensalistaActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ConsultarEstados consultarEstados = new ConsultarEstados(CadastroEnderecoMensalistaActivity.this);
+        ConsultarEstados consultarEstados = new ConsultarEstados(CadastroEnderecoMensalistaActivity.this, "1001");
         consultarEstados.execute();
     }
 }

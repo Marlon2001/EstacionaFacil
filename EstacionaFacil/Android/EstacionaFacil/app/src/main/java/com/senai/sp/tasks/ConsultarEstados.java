@@ -1,9 +1,11 @@
 package com.senai.sp.tasks;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
 
 import com.senai.sp.estacionafacil.CadastroEnderecoMensalistaActivity;
+import com.senai.sp.estacionafacil.CadastroNovoEndereco;
 import com.senai.sp.estacionafacil.MainActivity;
 import com.senai.sp.model.Estado;
 
@@ -23,10 +25,12 @@ import java.util.ArrayList;
 public class ConsultarEstados extends AsyncTask {
 
     private ArrayList<Estado> listEstados;
-    private CadastroEnderecoMensalistaActivity cadastroEndereco;
+    private Context context;
+    private String activityCalling;
 
-    public ConsultarEstados(CadastroEnderecoMensalistaActivity cadastroEndereco) {
-        this.cadastroEndereco = cadastroEndereco;
+    public ConsultarEstados(Context context, String activityCalling) {
+        this.context = context;
+        this.activityCalling = activityCalling;
     }
 
     @Override
@@ -71,8 +75,14 @@ public class ConsultarEstados extends AsyncTask {
 
     @Override
     protected void onPostExecute(Object o) {
-        ArrayAdapter arrayAdapter = new ArrayAdapter(cadastroEndereco, android.R.layout.simple_list_item_1, listEstados);
-        CadastroEnderecoMensalistaActivity.spinnerEstado.setAdapter(arrayAdapter);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(context, android.R.layout.simple_list_item_1, listEstados);
+
+        // Condição para saber qual activity irá receber o spinner de estados
+        if(activityCalling == "1001"){
+            CadastroEnderecoMensalistaActivity.spinnerEstado.setAdapter(arrayAdapter);
+        }else if(activityCalling == "1002"){
+            CadastroNovoEndereco.spinnerEstado.setAdapter(arrayAdapter);
+        }
         super.onPostExecute(o);
     }
 }
