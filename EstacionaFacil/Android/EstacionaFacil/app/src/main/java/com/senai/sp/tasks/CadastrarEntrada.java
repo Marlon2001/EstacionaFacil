@@ -19,10 +19,11 @@ public class CadastrarEntrada extends AsyncTask {
 
     private String txtPlaca;
     private String txtModelo;
-
-    public CadastrarEntrada(String txtPlaca, String txtModelo) {
+    private String tipo;
+    public CadastrarEntrada(String txtPlaca, String txtModelo, String tipo) {
         this.txtPlaca = txtPlaca;
         this.txtModelo = txtModelo;
+        this.tipo = tipo;
     }
 
     @Override
@@ -36,6 +37,7 @@ public class CadastrarEntrada extends AsyncTask {
             jsMovimento.key("tempo_permanencia").value(null);
             jsMovimento.key("valor_pago").value(null);
             jsMovimento.key("data_saida").value(null);
+            jsMovimento.key("tipo").value(tipo);
             jsMovimento.endObject();
 
             URL url = new URL("http://"+MainActivity.ipServidor+":8080/movimentacao");

@@ -47,6 +47,8 @@ public class CadastrarPreco extends AsyncTask {
             jsPreco.object();
             jsPreco.key("valorHora1").value(preco.getValorHora1());
             jsPreco.key("valorDemaisHoras").value(preco.getValorDemaisHoras());
+            jsPreco.key("valorVaga").value(preco.getValorVaga());
+            jsPreco.key("valorDiaria").value(preco.getValorDiaria());
             jsPreco.endObject();
 
             URL url = new URL("http://"+MainActivity.ipServidor+":8080/precos/cadastroPreco");

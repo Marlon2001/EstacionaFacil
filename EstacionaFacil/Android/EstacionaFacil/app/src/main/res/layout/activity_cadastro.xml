@@ -53,6 +53,25 @@
                 android:inputType="text"
                 android:layout_marginTop="8dp"
                 android:textSize="22sp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <CheckBox
+                    android:id="@+id/cb_diariasta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Diarista"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="30dp"/>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Avulso"
+                    />
+            </LinearLayout>
+
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 

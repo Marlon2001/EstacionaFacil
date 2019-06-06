@@ -11,10 +11,7 @@
             android:id="@+id/menu_entrada"
             android:title="Registrar entrada"
             android:icon="@drawable/ic_entrada" />
-        <item
-            android:id="@+id/menu_saida"
-            android:title="Registrar saída"
-            android:icon="@drawable/ic_saida" />
+
     </group>
     <item android:title="Mensalistas">
         <menu>

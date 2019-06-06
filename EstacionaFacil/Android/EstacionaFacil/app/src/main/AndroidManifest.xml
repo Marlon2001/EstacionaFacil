@@ -76,7 +76,7 @@
         <activity android:name=".VeiculoMensalistaActivity" />
         <activity android:name=".CadastroNovoVeiculo" />
         <activity android:name=".EnderecosMensalistaActivity" />
-        <activity android:name=".CadastroNovoEnderecoMensalista"></activity>
+        <activity android:name=".CadastroNovoEndereco"></activity>
     </application>
 
 </manifest>

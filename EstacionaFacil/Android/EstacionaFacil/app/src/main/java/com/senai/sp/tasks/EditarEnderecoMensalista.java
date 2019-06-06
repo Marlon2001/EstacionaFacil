@@ -16,12 +16,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
-public class CadastroEnderecoMensalista extends AsyncTask {
+public class EditarEnderecoMensalista extends AsyncTask {
 
     private Endereco endereco;
     private Mensalista mensalista;
 
-    public CadastroEnderecoMensalista(Endereco endereco, Mensalista mensalista){
+    public EditarEnderecoMensalista(Endereco endereco, Mensalista mensalista) {
         this.endereco = endereco;
         this.mensalista = mensalista;
     }
@@ -36,6 +36,7 @@ public class CadastroEnderecoMensalista extends AsyncTask {
                     "codMensalista": 1
                 },
                 "codEndereco": {
+                    "codEndereco": 5,
                     "logradouro": "Rua eulália",
                     "numero": "38",
                     "bairro": "JD Julieta",
@@ -50,21 +51,21 @@ public class CadastroEnderecoMensalista extends AsyncTask {
         try {
             jsEndereco.object();
                 jsEndereco.key("codMensalista").object()
-                        .key("codMensalista").value(mensalista.getCodMensalista())
+                    .key("codMensalista").value(mensalista.getCodMensalista())
                 .endObject();
                 jsEndereco.key("codEndereco").object()
-                        .key("logradouro").value(endereco.getLogradouro())
-                        .key("codEndereco").object().key("logradouro").value(endereco.getLogradouro())
-                        .key("logradouro").value(endereco.getLogradouro())
-                        .key("bairro").value(endereco.getLogradouro())
-                        .key("codCidade").object()
-                            .key("codCidade").value(endereco.getCidade())
-                        .endObject()
+                    .key("codEndereco").value(endereco.getCodEndereco())
+                    .key("logradouro").value(endereco.getLogradouro())
+                    .key("numero").value(endereco.getNumero())
+                    .key("bairro").value(endereco.getLogradouro())
+                    .key("codCidade").object()
+                        .key("codCidade").value(endereco.getCidade())
+                    .endObject()
                 .endObject();
-            jsEndereco.key("descricao").value(endereco.getDescricao());
+                jsEndereco.key("descricao").value(endereco.getDescricao());
             jsEndereco.endObject();
 
-            URL url = new URL("http://"+MainActivity.ipServidor+":8080/enderecoMensalista");
+            URL url = new URL("http://"+MainActivity.ipServidor+":8080/enderecoMensalista/");
 
             HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
 
