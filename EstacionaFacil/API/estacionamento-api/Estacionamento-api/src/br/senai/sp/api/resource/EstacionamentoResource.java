@@ -149,16 +149,18 @@ public class EstacionamentoResource {
 	@PostMapping
 	public ResponseEntity<Movimentacao> salvar(@RequestBody Movimentacao movimentacao, HttpServletResponse response) {
 		movimentacao.setDataEntrada(Date.dataAtual());
-		Movimentacao movimentacaoSalva = estacionamentoRepository.save(movimentacao);
 
 		// verificando o tipo da movimentação
-		if (!movimentacao.getTipo().equals("D")) {
+		System.out.println(movimentacao.getTipo() + "-------------------");
+		if (movimentacao.getTipo().equals("D") != true) {
 			if (veiculoRaposytory.getVeiculosByMensalista(movimentacao.getPlaca()) > 0) {
 				movimentacao.setTipo("M");
 			} else {
 				movimentacao.setTipo("A");
 			}
 		}
+		
+		Movimentacao movimentacaoSalva = estacionamentoRepository.save(movimentacao);
 
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{cod_movimentacao}")
 				.buildAndExpand(movimentacaoSalva.getCodMovimentacao()).toUri();

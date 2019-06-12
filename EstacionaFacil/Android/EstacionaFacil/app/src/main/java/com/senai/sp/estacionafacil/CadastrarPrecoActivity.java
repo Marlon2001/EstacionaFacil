@@ -37,6 +37,7 @@ public class CadastrarPrecoActivity extends AppCompatActivity {
 
         txtVagaCadastro = findViewById(R.id.txt_vaga_cadastro);
         txtDiariaCadastro = findViewById(R.id.txt_diaria_cadastro);
+
         txtVIewDiaria = findViewById(R.id.txt_diaria);
         txtViewVaga = findViewById(R.id.txt_vaga);
 
@@ -47,8 +48,8 @@ public class CadastrarPrecoActivity extends AppCompatActivity {
             Preco preco = new Preco();
             preco.setValorHora1(Double.parseDouble(txtPrimeiraHoraCadastro.getText().toString()));
             preco.setValorDemaisHoras(Double.parseDouble(txtDemaisHorasCadastro.getText().toString()));
-            preco.setValorDiaria(Double.parseDouble(txtVIewDiaria.getText().toString()));
-            preco.setValorVaga(Double.parseDouble(txtViewVaga.getText().toString()));
+            preco.setValorDiaria(Double.parseDouble(txtDiariaCadastro.getText().toString()));
+            preco.setValorVaga(Double.parseDouble(txtVagaCadastro.getText().toString()));
 
 
             CadastrarPreco cadastrarPreco = new CadastrarPreco(CadastrarPrecoActivity.this, preco);

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.senai.sp.tasks.CadastroEnderecoMensalista;
 import com.senai.sp.tasks.CarregarEnderecoMensalista;
 import com.senai.sp.tasks.CarregarTelefoneMensalista;
 
@@ -30,8 +31,8 @@ public class EnderecosMensalistaActivity extends AppCompatActivity {
         btnNovoEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // COLOCAR A ACTIVITY DE CADASTRO DO TELEFONE
-                Intent abrirCadastroEndereco = new Intent(EnderecosMensalistaActivity.this, CadastroNovoTelefone.class);
+                // COLOCAR A ACTIVITY DE CADASTRO DO Endereco
+                Intent abrirCadastroEndereco = new Intent(EnderecosMensalistaActivity.this, CadastroNovoEndereco.class);
                 abrirCadastroEndereco.putExtra("codMensalista", codMensalista);
 
                 startActivity(abrirCadastroEndereco);

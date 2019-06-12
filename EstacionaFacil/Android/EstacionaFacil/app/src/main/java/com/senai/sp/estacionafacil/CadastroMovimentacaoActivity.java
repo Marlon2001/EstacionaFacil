@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.senai.sp.tasks.CadastrarEntrada;
 
@@ -28,7 +29,10 @@ public class CadastroMovimentacaoActivity extends AppCompatActivity {
         btnCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String tipo = cbDiarista.isSelected() ?"D" : "";
+                String tipo = "";
+                if( cbDiarista.isChecked()){
+                    tipo = "D";
+                }
                 CadastrarEntrada cadastrarEntrada = new CadastrarEntrada(txtPlaca.getText().toString(), txtModelo.getText().toString(), tipo);
                 cadastrarEntrada.execute();
                 finish();

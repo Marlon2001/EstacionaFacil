@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    public static final String ipServidor = "10.107.144.29";
+    public static final String ipServidor = "10.107.144.14";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

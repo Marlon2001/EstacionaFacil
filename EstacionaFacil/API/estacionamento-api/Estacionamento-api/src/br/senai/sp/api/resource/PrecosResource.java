@@ -41,6 +41,7 @@ public class PrecosResource {
 
 		Precos precoAtual = precosRepository.findByDataSaidaIsNull();
 
+		System.out.println(preco.getValorDiaria() + "--------------");
 		Precos precoSalvar = precosRepository.save(preco);
 		String dataAtual = Date.dataAtual();
 		precoAtual.setDataSaida(dataAtual);

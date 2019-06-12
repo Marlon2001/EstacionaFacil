@@ -8,7 +8,8 @@
     android:orientation="vertical"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    android:id="@+id/drawer_layout">
+    android:id="@+id/drawer_layout"
+    android:background="@drawable/bcgd">
 
     <include layout="@layout/toolbar"/>
 
